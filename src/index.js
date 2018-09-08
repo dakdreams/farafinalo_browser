@@ -14,7 +14,7 @@ import registerServiceWorker from './registerServiceWorker';
 dotenv.config();
 
 const httpLink = createHttpLink({
-  uri: process.env.REACT_APP_SERVER_URL || 'http://localhost:8081',
+  uri: process.env.REACT_APP_SERVER_URL || 'http://localhost:8081/graphql',
 });
 
 const authMiddleware = new ApolloLink((operation, forward) => {
