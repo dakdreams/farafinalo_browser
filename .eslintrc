@@ -1,0 +1,10 @@
+{
+    "extends": [
+        "equimper"
+    ],
+    "plugins": ["react", "jsx-a11y", "import"
+    ],
+    "rules": {
+        "no-mixed-operators": "off"
+    }
+}

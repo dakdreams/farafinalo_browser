@@ -1,0 +1,45 @@
+{
+  "name": "farafina-browers",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "apollo-boost": "^0.1.4",
+    "apollo-cache-inmemory": "^1.1.5",
+    "apollo-link": "^1.2.0",
+    "apollo-link-context": "^1.0.3",
+    "apollo-link-http": "^1.3.2",
+    "apollo-upload-client": "^7.1.0-alpha.1",
+    "axios": "^0.18.0",
+    "cloudinary-react": "^1.0.6",
+    "dotenv": "^5.0.0",
+    "graphql": "0.13",
+    "graphql-tag": "^2.6.1",
+    "jwt-decode": "^2.2.0",
+    "mobx": "^3.4.1",
+    "mobx-react": "^4.3.5",
+    "moment": "^2.22.0",
+    "react": "^16.2.0",
+    "react-apollo": "^2.1.1",
+    "react-dom": "^16.2.0",
+    "react-dropzone": "^4.2.8",
+    "react-image-lightbox": "^4.6.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.0",
+    "react-slick": "^0.19.0",
+    "semantic-ui-react": "^0.77.2",
+    "styled-components": "^3.1.5",
+    "uuid": "^3.2.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "eslint": "^4.16.0",
+    "eslint-config-equimper": "^2.2.2",
+    "faker": "^4.1.0",
+    "ws": "3.3.2"
+  }
+}
