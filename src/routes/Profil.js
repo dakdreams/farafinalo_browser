@@ -531,14 +531,14 @@ class Profil extends React.Component {
                       </Tab.Pane>
                     ),
                   },
-                  {
-                    menuItem: <Menu.Item key="favories">Stores</Menu.Item>,
-                    render: () => (
-                      <Tab.Pane>
-                        <div> tous mes magasin farories</div>
-                      </Tab.Pane>
-                    ),
-                  },
+                  // {
+                  //   menuItem: <Menu.Item key="favories">Stores</Menu.Item>,
+                  //   render: () => (
+                  //     <Tab.Pane>
+                  //       <div> tous mes magasin farories</div>
+                  //     </Tab.Pane>
+                  //   ),
+                  // },
                 ]}
               />
             ) : (
@@ -552,14 +552,14 @@ class Profil extends React.Component {
                       </Tab.Pane>
                     ),
                   },
-                  {
-                    menuItem: <Menu.Item key="favories">Stores</Menu.Item>,
-                    render: () => (
-                      <Tab.Pane>
-                        <FollowStoreView />
-                      </Tab.Pane>
-                    ),
-                  },
+                  // {
+                  //   menuItem: <Menu.Item key="favories">Stores</Menu.Item>,
+                  //   render: () => (
+                  //     <Tab.Pane>
+                  //       <FollowStoreView />
+                  //     </Tab.Pane>
+                  //   ),
+                  // },
                   {
                     menuItem: 'Mon Profil',
                     render: () => (

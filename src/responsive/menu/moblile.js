@@ -173,11 +173,12 @@ class MenuMobile extends React.Component {
             </Grid.Column>
           </Grid>
         </Grid.Column>
-        <Grid.Column textAlign="right" style={{ paddingBottom: 0, paddingRight: 2 }}>
+        <Grid.Column textAlign="right" style={{ paddingBottom: 0, paddingRight: 13 }}>
           {firstname ? (
             <Popup
               trigger={
                 <Image
+                  floated="right"
                   style={{ width: '30px', height: '30px' }}
                   circular
                   size="medium"

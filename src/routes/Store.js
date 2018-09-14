@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Tab, Responsive, Segment, Image, Card, Rating, Button, Label, Container, Header, Modal, Icon } from 'semantic-ui-react';
 import { graphql, Query, compose } from 'react-apollo';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 import BigMenu from '../responsive/menu';
 import Products from '../components/product';
@@ -99,6 +100,12 @@ class Store extends React.Component {
     const { owner, profil, business, about, firstname, secondname, avatar } = this.state;
     const { me = [] } = this.props.meQuery;
     const { id } = me;
+    const MobileWraper = styled.div`
+      position: relative;
+      width: 100%;
+      border: none;
+    `;
+
     const StoreProduct = () => (
       <Query query={storeAllProductQuery} variables={{ owner }}>
         {({ loading, error, data }) => {
@@ -225,15 +232,15 @@ class Store extends React.Component {
           <div style={{ backgroundColor: '#fcfcfc' }}>
             <Container>
               <BigMenu />
-              <div>
-                <Grid style={{ marginTop: '15px' }}>
-                  <Grid.Row style={{ width: '100%', height: '50%' }}>
+              <MobileWraper>
+                <Grid>
+                  <Grid.Row style={{ width: '100%', height: '40%', marginTop: '15px' }}>
                     {profil ? (
-                      <img width="100%" height="30%" alt="" src={`http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${profil}`} />
+                      <img width="100%" height="155em" alt="" src={`http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${profil}`} />
                     ) : (
                       <img
                         width="100%"
-                        height="30%"
+                        height="155em"
                         alt=""
                         src="http://www.lisapoyakama.org/wp-content/uploads/2016/08/AshantiToZulu_100-1024x484.jpg"
                       />
@@ -275,11 +282,11 @@ class Store extends React.Component {
                       />
                     )}
                   </Grid.Row>
-                  <Grid.Row
+                  <div
                     style={{
                       position: 'absolute',
-                      top: '100%',
-                      left: '33%',
+                      top: '98%',
+                      left: '27%',
                     }}
                   >
                     {id ? (
@@ -291,11 +298,8 @@ class Store extends React.Component {
                         </Button>
                       </Link>
                     )}
-                    {/* <Button style={{ borderRadius: '40%' }} size="small" positive>
-                      suivre +
-                    </Button> */}
-                  </Grid.Row>
-                  <Grid.Row
+                  </div>
+                  <div
                     style={{
                       position: 'absolute',
                       top: '85%',
@@ -304,7 +308,7 @@ class Store extends React.Component {
                     }}
                   >
                     <Rating icon="star" defaultRating={3} maxRating={5} />
-                  </Grid.Row>
+                  </div>
                   <Grid.Row
                     style={{
                       position: 'absolute',
@@ -319,7 +323,7 @@ class Store extends React.Component {
                   <Grid.Row
                     style={{
                       position: 'absolute',
-                      top: '85%',
+                      top: '81%',
                       left: '2%',
                     }}
                   >
@@ -370,7 +374,7 @@ class Store extends React.Component {
                     {/* <StoreProduct /> */}
                   </Grid.Row>
                 </Grid>
-              </div>
+              </MobileWraper>
             </Container>
           </div>
         </Responsive>

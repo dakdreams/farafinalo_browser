@@ -83,7 +83,7 @@ class Login extends React.Component {
     return (
       <div>
         <Responsive {...Responsive.onlyMobile}>
-          <div style={{ backgroundColor: '#cccccc', height: '100%' }}>
+          <div style={{ height: '100%' }}>
             <Header textAlign="center" as="h2">
               Connecter vous
             </Header>
@@ -128,7 +128,7 @@ class Login extends React.Component {
           </div>
         </Responsive>
         <Responsive minWidth={768}>
-          <div style={{ backgroundColor: '#cccccc', height: '100%' }}>
+          <div style={{ height: '100%' }}>
             <Grid>
               <Grid.Row>
                 <Grid.Column width={8} style={{ height: '100%' }}>

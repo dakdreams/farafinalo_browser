@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Container, Segment, Tab, Header, List, Image, Responsive } from 'semantic-ui-react';
+import { Grid, Container, Tab, Header, List, Image, Responsive } from 'semantic-ui-react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 import { graphql, compose } from 'react-apollo';
@@ -132,9 +132,10 @@ class Home extends React.Component {
     const settings2 = {
       dots: true,
       infinite: true,
+      speed: 500,
       autoplay: true,
       autoplaySpeed: 2000,
-      speed: 500,
+      centerMode: true,
       slidesToShow: 1,
       slidesToScroll: 1,
     };
@@ -205,7 +206,7 @@ class Home extends React.Component {
               </Slider>
             </Grid.Column>
 
-            <Grid.Column textAlign="center" floated="right" tablet={0} computer={3} >
+            <Grid.Column textAlign="center" floated="right" tablet={0} computer={3}>
               <Responsive {...Responsive.onlyComputer}>
                 <HomeLogin firstname={firstname} avatar={avatar} />
               </Responsive>
@@ -242,7 +243,7 @@ class Home extends React.Component {
 
     const MobileWraper = styled.div`
       position: relative;
-      top: 1em;
+      top: 1.5em;
       width: 100%;
       border: none;
     `;
@@ -251,24 +252,26 @@ class Home extends React.Component {
       <MobileWraper>
         <Grid>
           <Grid.Row>
-            <Slider {...settings2} style={{ backgroundColor: '#eeeeee' }}>
-              <div>
-                <img
-                  width="100%"
-                  height="110px"
-                  alt=""
-                  src={'https://cdn.shopify.com/s/files/1/1510/7986/files/slider_espace_meuble_1920x.jpg?vu003d1515531332'}
-                />
-              </div>
-              <div>
-                <img
-                  width="100%"
-                  height="110px"
-                  alt=""
-                  src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw54GuRmB3WXWk3VoUWnnpI5YWTX01atDQn9CqS4tr4fEROcz2jA'}
-                />
-              </div>
-            </Slider>
+            <Grid.Column width={16}>
+              <Slider {...settings2}>
+                <div key="1">
+                  <img
+                    width="100%"
+                    height="140px"
+                    alt=""
+                    src={'https://cdn.shopify.com/s/files/1/1510/7986/files/slider_espace_meuble_1920x.jpg?vu003d1515531332'}
+                  />
+                </div>
+                <div key="2">
+                  <img
+                    width="100%"
+                    height="140px"
+                    alt=""
+                    src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw54GuRmB3WXWk3VoUWnnpI5YWTX01atDQn9CqS4tr4fEROcz2jA'}
+                  />
+                </div>
+              </Slider>
+            </Grid.Column>
           </Grid.Row>
 
           <Grid.Row columns="equal">
@@ -328,7 +331,7 @@ class Home extends React.Component {
     );
 
     return (
-      <Segment.Group>
+      <div>
         <Responsive {...Responsive.onlyMobile}>
           <div style={{ backgroundColor: '#fcfcfc' }}>
             <Container>
@@ -345,9 +348,12 @@ class Home extends React.Component {
             <ComputerHome />
           </div>
         </Responsive>
-      </Segment.Group>
+      </div>
     );
   }
 }
 
-export default compose(graphql(meQuery, { name: 'meQuery' }), graphql(allProductQuery, { name: 'allProductQuery' }))(Home);
+export default compose(
+  graphql(meQuery, { name: 'meQuery' }),
+  graphql(allProductQuery, { name: 'allProductQuery' })
+)(Home);
