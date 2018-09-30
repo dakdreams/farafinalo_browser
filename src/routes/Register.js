@@ -124,7 +124,7 @@ class Register extends React.Component {
                   />
                 </Form.Group>
                 <Form.Group widths={2}>
-                  <Form.Input error={!!emailError} label="email" name="email" onChange={this.onChange} value={email} placeholder="Email" fluid />
+                  <Form.Input error={!!emailError} label="email" name="email" onChange={this.onChange} type="email" value={email} placeholder="Email" fluid />
                   <Form.Input
                     error={!!passwordError}
                     label="Mot de passe"

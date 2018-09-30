@@ -93,7 +93,7 @@ class Login extends React.Component {
             <MobyleForContaint>
               <Form size="mini">
                 <Form.Group unstackable widths={2}>
-                  <Form.Input error={!!emailError} name="email" onChange={this.onChange} value={email} placeholder="Email" />
+                  <Form.Input error={!!emailError} name="email" onChange={this.onChange} type="email" value={email} placeholder="Email" />
                   <Form.Input
                     error={!!passwordError}
                     name="password"
@@ -157,7 +157,7 @@ class Login extends React.Component {
                   <ForContaint>
                     <Form>
                       <Form.Group unstackable widths={2}>
-                        <Form.Input error={!!emailError} name="email" onChange={this.onChange} value={email} placeholder="Email" />
+                        <Form.Input error={!!emailError} name="email" type="email" onChange={this.onChange} value={email} placeholder="Email" />
                         <Form.Input
                           error={!!passwordError}
                           name="password"

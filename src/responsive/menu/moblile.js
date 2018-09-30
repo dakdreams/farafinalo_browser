@@ -43,6 +43,12 @@ class MenuMobile extends React.Component {
     const { allProduct = [] } = this.props.allproductquery;
     const { products = [] } = allProduct;
 
+    // const trigger = (
+    //   <span>
+    //     <Image avatar src={'https://cdn.shopify.com/s/files/1/1510/7986/files/slider_espace_meuble_1920x.jpg?vu003d1515531332'} />
+    //   </span>
+    // );
+
     const Drop = () => (
       <Dropdown item icon="sidebar" simple>
         <Dropdown.Menu>
@@ -179,7 +185,7 @@ class MenuMobile extends React.Component {
               trigger={
                 <Image
                   floated="right"
-                  style={{ width: '30px', height: '30px' }}
+                  style={{ width: '30px', height: '30px', marginRight: 8 }}
                   circular
                   size="medium"
                   src={avatar ? `http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${avatar}` : '/afriqua.png'}

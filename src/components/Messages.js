@@ -1,7 +1,7 @@
 import React from 'react';
 import { Query, graphql, compose } from 'react-apollo';
 import moment from 'moment';
-import { Header, Comment, Form, Button, Container, Card } from 'semantic-ui-react';
+import { Header, Comment, Form, Button, Container, Card, Loader } from 'semantic-ui-react';
 
 import { getOwnerCommentQuery, makeCommentAllMyClientQuery, getFollowerCommentQuery } from '../graphql/queries';
 
@@ -44,25 +44,12 @@ class Messages extends React.Component {
   render() {
     const CLOUD_NAME = 'dg6zkrdqu';
     const { prodowner, text, userbusinessname } = this.state;
-    // const OwnerText = () => (
-    //   <div>
-    //     <Header as="h3" dividing>
-    //       Commentaire
-    //     </Header>
-    //     <Form style={{ width: '50%' }} reply>
-    //       <Form.TextArea style={{ fontSize: 12 }} name="text" onChange={this.getCommentText} value={text} placeholder="text" />
-    //     </Form>
-    //     <Button onClick={this.onSubmit} type="submit">
-    //       Submit
-    //     </Button>
-    //   </div>
-    // );
 
     const FollowCommentView = () => (
       <Query query={getFollowerCommentQuery}>
         {({ loading, error, data }) => {
           if (loading) {
-            return <p>loading...</p>;
+            return <Loader active inline='centered' />;
           }
           if (error) return `Error! ${error.message}`;
 
@@ -122,7 +109,7 @@ class Messages extends React.Component {
       <Query query={getOwnerCommentQuery} variables={{ prodowner }}>
         {({ loading, error, data }) => {
           if (loading) {
-            return <p>loading...</p>;
+            return <Loader active inline='centered' />;
           }
           if (error) return `Error! ${error.message}`;
 
@@ -185,10 +172,11 @@ class Messages extends React.Component {
         </Header>
         {userbusinessname ? (
           <div>
-            <Form style={{ width: '50%' }} reply>
+            <Form style={{ width: '100%' }} reply>
               <Form.TextArea
                 style={{ fontSize: 12 }}
                 name="text"
+                type="text"
                 onChange={this.getCommentText}
                 value={text}
                 placeholder="envoyer messeage a tous vos abonee"
