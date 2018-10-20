@@ -26,6 +26,7 @@ const MobyleForContaint = styled.div`
 
 class Register extends React.Component {
   state = {
+    isLoggedIn: false,
     firstname: '',
     firstnameError: '',
     secondname: '',
@@ -124,7 +125,16 @@ class Register extends React.Component {
                   />
                 </Form.Group>
                 <Form.Group widths={2}>
-                  <Form.Input error={!!emailError} label="email" name="email" onChange={this.onChange} type="email" value={email} placeholder="Email" fluid />
+                  <Form.Input
+                    error={!!emailError}
+                    label="email"
+                    name="email"
+                    onChange={this.onChange}
+                    type="email"
+                    value={email}
+                    placeholder="Email"
+                    fluid
+                  />
                   <Form.Input
                     error={!!passwordError}
                     label="Mot de passe"
@@ -146,7 +156,8 @@ class Register extends React.Component {
             </MobyleForContaint>
             <Message floating style={{ marginTop: 114 }}>
               <p style={{ fontSize: '20px', fontStyle: 'italic' }}>
-                "je suis africain non pas parce que je suis né en afrique.<br />
+                "je suis africain non pas parce que je suis né en afrique.
+                <br />
                 mais parce que l afrique est née en moi."
               </p>
               <div style={{ textAlign: 'right' }}>
@@ -172,7 +183,8 @@ class Register extends React.Component {
                 <Grid.Column width={6} style={{ height: '100%' }}>
                   <Message floating style={{ marginTop: '20%' }}>
                     <p style={{ fontSize: '40px', fontStyle: 'italic' }}>
-                      "je suis africain non pas parce que je suis né en afrique.<br />
+                      "je suis africain non pas parce que je suis né en afrique.
+                      <br />
                       mais parce que l afrique est née en moi."
                     </p>
                     <div style={{ textAlign: 'right' }}>

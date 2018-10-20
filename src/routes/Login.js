@@ -1,28 +1,30 @@
 import React from 'react';
 import { extendObservable } from 'mobx';
 import { observer } from 'mobx-react';
-import { Form, Header, Message, Button, Grid, Image, Responsive } from 'semantic-ui-react';
+import { Form, Header, Message, Button, Grid, Image, Responsive, Dimmer, Loader, Divider, Segment } from 'semantic-ui-react';
 import { graphql } from 'react-apollo';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import { loginMutation } from '../graphql/queries';
+import FaceBookConnect from '../components/facebookConnect';
+import GoogleConnect from '../components/googleConnect';
 
 const ForContaint = styled.div`
   position: absolute;
   top: 30%;
   left: 20%;
   z-index: 0;
-  width: 50.6%;
+  width: 60%;
   border: none;
 `;
 
 const MobyleForContaint = styled.div`
   position: absolute;
-  top: 26%;
+  top: 20%;
   left: 13%;
   z-index: 0;
-  width: 60.6%;
+  width: 70%;
   border: none;
 `;
 class Login extends React.Component {
@@ -33,6 +35,7 @@ class Login extends React.Component {
       email: '',
       password: '',
       errors: {},
+      active: false,
     });
   }
 
@@ -63,11 +66,16 @@ class Login extends React.Component {
     this[name] = value;
   };
 
+  Validation = () => {
+    this.active = true;
+  };
+
   render() {
     const {
       email,
       password,
       errors: { emailError, passwordError },
+      active,
     } = this;
 
     const errorList = [];
@@ -83,6 +91,17 @@ class Login extends React.Component {
     return (
       <div>
         <Responsive {...Responsive.onlyMobile}>
+          {active ? (
+            <div style={{ height: '100%' }}>
+              <Dimmer active={active}>
+                <Loader indeterminate>chargement...</Loader>
+              </Dimmer>
+
+              <Image src="/images/wireframe/short-paragraph.png" />
+            </div>
+          ) : (
+            ''
+          )}
           <div style={{ height: '100%' }}>
             <Header textAlign="center" as="h2">
               Connecter vous
@@ -90,24 +109,37 @@ class Login extends React.Component {
             <div>
               <Image src="https://www.goafricaonline.com/images/drapeaux/afrique.png" size="huge" />
             </div>
+
             <MobyleForContaint>
-              <Form size="mini">
-                <Form.Group unstackable widths={2}>
-                  <Form.Input error={!!emailError} name="email" onChange={this.onChange} type="email" value={email} placeholder="Email" />
-                  <Form.Input
-                    error={!!passwordError}
-                    name="password"
-                    onChange={this.onChange}
-                    value={password}
-                    type="password"
-                    placeholder="Password"
-                  />
-                </Form.Group>
-              </Form>
-              <Button fluid style={{ marginTop: 10 }} onClick={this.onSubmit}>
-                Valider
-              </Button>
-              {errorList.length ? <Message error header="erreur" list={errorList} /> : null}
+              <div padded>
+                <Button.Group>
+                  <Button color="black" onClick={this.Validation} style={{ padding: 2 }}>
+                    <FaceBookConnect />
+                  </Button>
+                  <Button.Or text="Ou" />
+                  <Button color="black" onClick={this.Validation} style={{ padding: 2 }}>
+                    <GoogleConnect />
+                  </Button>
+                </Button.Group>
+                <Divider horizontal>Or</Divider>
+                <Form size="mini">
+                  <Form.Group unstackable widths={2}>
+                    <Form.Input error={!!emailError} name="email" onChange={this.onChange} type="email" value={email} placeholder="Email" />
+                    <Form.Input
+                      error={!!passwordError}
+                      name="password"
+                      onChange={this.onChange}
+                      value={password}
+                      type="password"
+                      placeholder="Password"
+                    />
+                  </Form.Group>
+                </Form>
+                <Button fluid style={{ marginTop: 10 }} onClick={this.onSubmit}>
+                  Valider
+                </Button>
+                {errorList.length ? <Message error header="erreur" list={errorList} /> : null}
+              </div>
             </MobyleForContaint>
             <Message floating>
               <p style={{ fontSize: '20px', fontStyle: 'italic' }}>"Produisons ce que nous consommons et consommons ce que nous produisons."</p>
@@ -155,23 +187,36 @@ class Login extends React.Component {
                     <Image src="/afriqua.png" size="huge" />
                   </div>
                   <ForContaint>
-                    <Form>
-                      <Form.Group unstackable widths={2}>
-                        <Form.Input error={!!emailError} name="email" type="email" onChange={this.onChange} value={email} placeholder="Email" />
-                        <Form.Input
-                          error={!!passwordError}
-                          name="password"
-                          onChange={this.onChange}
-                          value={password}
-                          type="password"
-                          placeholder="Password"
-                        />
-                      </Form.Group>
-                    </Form>
-                    <Button fluid style={{ marginTop: 10 }} onClick={this.onSubmit}>
-                      Valider
-                    </Button>
-                    {errorList.length ? <Message error header="There was some errors with your submission" list={errorList} /> : null}
+                    <Segment padded>
+                      <Grid columns="equal">
+                        <Grid.Column floated="left">
+                          <FaceBookConnect />
+                        </Grid.Column>
+                        <Grid.Column floated="right">
+                          <GoogleConnect />
+                        </Grid.Column>
+                      </Grid>
+                      <Divider horizontal>Ou</Divider>
+                      <div>
+                        <Form>
+                          <Form.Group unstackable widths={2}>
+                            <Form.Input error={!!emailError} name="email" type="email" onChange={this.onChange} value={email} placeholder="Email" />
+                            <Form.Input
+                              error={!!passwordError}
+                              name="password"
+                              onChange={this.onChange}
+                              value={password}
+                              type="password"
+                              placeholder="Password"
+                            />
+                          </Form.Group>
+                        </Form>
+                        <Button fluid style={{ marginTop: 10 }} onClick={this.onSubmit}>
+                          Valider
+                        </Button>
+                        {errorList.length ? <Message error header="There was some errors with your submission" list={errorList} /> : null}
+                      </div>
+                    </Segment>
                   </ForContaint>
                 </Grid.Column>
               </Grid.Row>

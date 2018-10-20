@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, Button, Reveal } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-const CLOUD_NAME = 'dg6zkrdqu';
+// const CLOUD_NAME = 'dg6zkrdqu';
 
 class HomeLogin extends React.Component {
   constructor(props) {
@@ -34,7 +34,7 @@ class HomeLogin extends React.Component {
                     style={{ width: '224px', height: '224px', marginLeft: '8%' }}
                     circular
                     size="medium"
-                    src={`http://res.cloudinary.com/${CLOUD_NAME}/image/upload/${this.state.userAvatar}`}
+                    src={`${this.state.userAvatar}`}
                   />
                 ) : (
                   <Image

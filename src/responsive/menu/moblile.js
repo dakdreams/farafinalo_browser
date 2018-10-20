@@ -4,7 +4,6 @@ import { graphql, compose } from 'react-apollo';
 import { Dropdown, Icon, Button, Grid, Popup, Search, Image, Modal, Header } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-import config from '../../config';
 import { allProductQuery, meQuery } from '../../graphql/queries';
 
 // const Search = () => (
@@ -188,7 +187,7 @@ class MenuMobile extends React.Component {
                   style={{ width: '30px', height: '30px', marginRight: 8 }}
                   circular
                   size="medium"
-                  src={avatar ? `http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${avatar}` : '/afriqua.png'}
+                  src={avatar ? `${avatar}` : '/afriqua.png'}
                 />
               }
               content={

@@ -12,7 +12,7 @@ import BigMenu from '../responsive/menu';
 import ProfilImage from '../responsive/layout/profil';
 import Avatar from '../responsive/layout/avatar';
 import About from '../responsive/layout/about';
-import config from '../config';
+// import config from '../config';
 import { getUserAllProductQuery, meQuery, getFollowStoreQuery } from '../graphql/queries';
 import Messages from '../components/Messages';
 import StoreView from '../components/StoreView';
@@ -468,7 +468,7 @@ class Profil extends React.Component {
               alt=""
               src={
                 profil
-                  ? `http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${profil}`
+                  ? `${profil}`
                   : 'http://www.lisapoyakama.org/wp-content/uploads/2016/08/AshantiToZulu_100-1024x484.jpg'
               }
             />
@@ -478,7 +478,7 @@ class Profil extends React.Component {
                 height="75"
                 borderRadius="100px"
                 alt=""
-                src={avatar ? `http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${avatar}` : '/afriqua.png'}
+                src={avatar ? `${avatar}` : '/afriqua.png'}
               />
             </MobileAvatar>
           </Grid.Row>
@@ -592,7 +592,7 @@ class Profil extends React.Component {
             <BigMenu />
             <Container>
               {profil ? (
-                <ProfilImage src={`http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${profil}`} />
+                <ProfilImage src={`${profil}`} />
               ) : (
                 <ProfilImage src="http://www.lisapoyakama.org/wp-content/uploads/2016/08/AshantiToZulu_100-1024x484.jpg" />
               )}
@@ -602,7 +602,7 @@ class Profil extends React.Component {
                     style={{ width: '180px', height: '180px' }}
                     size="medium"
                     circular
-                    src={`http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${avatar}`}
+                    src={`${avatar}`}
                   />
                 ) : (
                   <Image style={{ width: '238px', height: '238px' }} src="https://www.goafricaonline.com/images/drapeaux/afrique.png" />
@@ -621,7 +621,7 @@ class Profil extends React.Component {
             <BigMenu />
             <Container>
               {profil ? (
-                <ProfilImage src={`http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${profil}`} />
+                <ProfilImage src={`${profil}`} />
               ) : (
                 <ProfilImage src="http://www.lisapoyakama.org/wp-content/uploads/2016/08/AshantiToZulu_100-1024x484.jpg" />
               )}
@@ -629,7 +629,7 @@ class Profil extends React.Component {
                 {avatar ? (
                   <Image
                     style={{ width: '238px', height: '238px' }}
-                    src={`http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${avatar}`}
+                    src={`${avatar}`}
                   />
                 ) : (
                   <Image style={{ width: '238px', height: '238px' }} src="https://www.goafricaonline.com/images/drapeaux/afrique.png" />

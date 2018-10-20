@@ -89,7 +89,9 @@ class updating extends React.Component {
 
     console.log(response);
 
-    const clourl = await `v${response.data.version}/${response.data.public_id}.${response.data.format}`;
+    const clourl = await response.data.secure_url;
+
+    // const clourl = await `v${response.data.version}/${response.data.public_id}.${response.data.format}`;
 
     // const { preview, name, type, size } = file;
     // const path = preview.substring(27);
@@ -117,7 +119,7 @@ class updating extends React.Component {
 
     console.log(response);
 
-    const clourl2 = await `v${response.data.version}/${response.data.public_id}.${response.data.format}`;
+    const clourl2 = await response.data.secure_url;
 
     // const { preview, name, type, size } = file;
     // const path = preview.substring(27);
@@ -213,9 +215,9 @@ class updating extends React.Component {
           </Dimmer>
         );
       } else if (valide2) {
-        return <Image style={{ width: '100%', height: '100%' }} src={`http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${donne}`} />;
+        return <Image style={{ width: '100%', height: '100%' }} src={`${donne}`} />;
       } else if (donne) {
-        return <Image style={{ width: '100%', height: '100%' }} src={`http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${donne}`} />;
+        return <Image style={{ width: '100%', height: '100%' }} src={`${donne}`} />;
       }
       return (
         <Image
@@ -233,9 +235,9 @@ class updating extends React.Component {
           </Dimmer>
         );
       } else if (valide1) {
-        return <Image style={{ width: '100%', height: '100%' }} src={`http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${value}`} />;
+        return <Image style={{ width: '100%', height: '100%' }} src={`${value}`} />;
       } else if (value) {
-        return <Image style={{ width: '100%', height: '100%' }} src={`http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${value}`} />;
+        return <Image style={{ width: '100%', height: '100%' }} src={`${value}`} />;
       }
       return <Image style={{ width: '100%', height: '100%' }} src="/afriqua.png" />;
     };

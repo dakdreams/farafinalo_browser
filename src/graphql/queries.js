@@ -275,8 +275,8 @@ const getUserAllProductQuery = gql`
 `;
 
 const registerMutation = gql`
-  mutation($firstname: String!, $secondname: String!, $email: String!, $password: String!) {
-    register(firstname: $firstname, secondname: $secondname, email: $email, password: $password) {
+  mutation($firstname: String!, $secondname: String!, $email: String!, $password: String!, $avatar: String!) {
+    register(firstname: $firstname, secondname: $secondname, email: $email, password: $password, avatar: $avatar) {
       ok
       errors {
         path
