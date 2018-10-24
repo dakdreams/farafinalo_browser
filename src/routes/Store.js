@@ -1,12 +1,11 @@
 import React from 'react';
-import { Grid, Tab, Responsive, Segment, Image, Card, Rating, Button, Label, Container, Header, Modal, Icon } from 'semantic-ui-react';
+import { Grid, Tab, Responsive, Segment, Image, Card, Rating, Button, Label, Container, Header, Modal, Icon, Loader } from 'semantic-ui-react';
 import { graphql, Query, compose } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import BigMenu from '../responsive/menu';
 import Products from '../components/product';
-import config from '../config';
 import {
   getOwnerInfoQuery,
   storeAllProductQuery,
@@ -101,19 +100,17 @@ class Store extends React.Component {
     const { me = [] } = this.props.meQuery;
     const { id } = me;
     const MobileWraper = styled.div`
-      position: relative;
-      width: 100%;
-      border: none;
+      // position: relative;
+      // width: 100%;
+      // border: none;
     `;
 
     const StoreProduct = () => (
       <Query query={storeAllProductQuery} variables={{ owner }}>
         {({ loading, error, data }) => {
-          if (loading) return null;
+          if (loading) return <Loader active inline="centered" />;
           if (error) return `Error!: ${error}`;
-          if (data.storeAllProduct.products.length === 0) {
-            window.location.replace('/');
-          }
+          if (data.storeAllProduct.products.length === 0) return <h1>pas de produit pour le moment</h1>;
 
           return (
             <div>
@@ -236,7 +233,7 @@ class Store extends React.Component {
                 <Grid>
                   <Grid.Row style={{ width: '100%', height: '40%', marginTop: '15px' }}>
                     {profil ? (
-                      <img width="100%" height="155em" alt="" src={`http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${profil}`} />
+                      <img width="100%" height="155em" alt="" src={`${profil}`} />
                     ) : (
                       <img
                         width="100%"
@@ -252,20 +249,20 @@ class Store extends React.Component {
                         style={{
                           position: 'absolute',
                           top: '-5em',
-                          left: '35%',
+                          left: '39%',
                           width: '90px',
                           height: '90px',
                         }}
                         circular
                         size="medium"
-                        src={`http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${avatar}`}
+                        src={`${avatar}`}
                       />
                     ) : (
                       <Image
                         style={{
                           position: 'absolute',
                           top: '-5em',
-                          left: '35%',
+                          left: '39%',
                           width: '90px',
                           height: '90px',
                         }}
@@ -286,7 +283,7 @@ class Store extends React.Component {
                     style={{
                       position: 'absolute',
                       top: '98%',
-                      left: '27%',
+                      left: '36%',
                     }}
                   >
                     {id ? (
@@ -302,9 +299,8 @@ class Store extends React.Component {
                   <div
                     style={{
                       position: 'absolute',
-                      top: '85%',
+                      top: '89%',
                       left: '70%',
-                      zIndex: '1',
                     }}
                   >
                     <Rating icon="star" defaultRating={3} maxRating={5} />
@@ -341,7 +337,7 @@ class Store extends React.Component {
                         {
                           menuItem: 'Product',
                           render: () => (
-                            <Tab.Pane attached={false}>
+                            <Tab.Pane style={{ width: '100%' }} attached={false}>
                               <StoreProduct />
                             </Tab.Pane>
                           ),
@@ -386,7 +382,7 @@ class Store extends React.Component {
               <Grid.Column width={6} style={{ height: 800, paddingLeft: 20, position: 'fixed' }}>
                 <Grid.Row>
                   {profil ? (
-                    <img width="100%" height="200" alt="" src={`http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${profil}`} />
+                    <img width="100%" height="200" alt="" src={`${profil}`} />
                   ) : (
                     <img
                       width="100%"
@@ -399,7 +395,7 @@ class Store extends React.Component {
                   <Card style={{ width: '100%' }}>
                     <Card.Content>
                       {avatar ? (
-                        <Image floated="right" size="mini" src={`http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${avatar}`} />
+                        <Image floated="right" size="mini" src={`${avatar}`} />
                       ) : (
                         <Image floated="right" size="mini" src="https://www.goafricaonline.com/images/drapeaux/afrique.png" />
                       )}
@@ -458,7 +454,7 @@ class Store extends React.Component {
               <Grid.Column width={4} style={{ height: 800, paddingLeft: 20, position: 'fixed' }}>
                 <Grid.Row>
                   {profil ? (
-                    <img width="100%" height="200" alt="" src={`http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${profil}`} />
+                    <img width="100%" height="200" alt="" src={`${profil}`} />
                   ) : (
                     <img
                       width="100%"
@@ -471,7 +467,7 @@ class Store extends React.Component {
                   <Card style={{ width: '100%' }}>
                     <Card.Content>
                       {avatar ? (
-                        <Image floated="right" size="tiny" src={`http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${avatar}`} />
+                        <Image floated="right" size="tiny" src={`${avatar}`} />
                       ) : (
                         <Image floated="right" size="tiny" src="https://www.goafricaonline.com/images/drapeaux/afrique.png" />
                       )}

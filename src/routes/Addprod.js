@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql, compose } from 'react-apollo';
 import axios from 'axios';
-import { Form, Container, Message, Dimmer, Loader, Grid, Responsive, Button } from 'semantic-ui-react';
+import { Form, Container, Message, Dimmer, Loader, Grid, Responsive, Button, Segment } from 'semantic-ui-react';
 import Dropzone from 'react-dropzone';
 import Slider from 'react-slick';
 import Lightbox from 'react-image-lightbox';
@@ -213,7 +213,6 @@ class addprodLayout extends React.Component {
       });
 
       const { ok, errors } = response.data.addProduct;
-      console.log(errors);
 
       if (ok) {
         window.location.replace('/');
@@ -326,7 +325,7 @@ class addprodLayout extends React.Component {
       );
     };
     return (
-      <div style={{ backgroundColor: '#eeeeee' }}>
+      <Segment.Group style={{ backgroundColor: '#eeeeee' }}>
         <Responsive {...Responsive.onlyMobile}>
           <Container>
             <Menu />
@@ -405,8 +404,28 @@ class addprodLayout extends React.Component {
                       defaultValue={prodcathegory}
                     /> */}
                       <Form.Field label="cathegorie de produit:" control="select" value={prodcathegory} onChange={this.getCathegorie}>
-                        <option value="meuble">Meuble Maison</option>
-                        <option value="vestimentaire">Vestimentaire</option>
+                        <optgroup label="Mobilies">
+                          <option value="decoration">Decoration</option>
+                          <option value="lit">Lit</option>
+                          <option value="canape">Canape</option>
+                        </optgroup>
+                        <optgroup label="Modes Femme">
+                          <option value="chaussureF">Chaussure</option>
+                          <option value="vetementF">Vetements</option>
+                          <option value="sacF">Sacs</option>
+                          <option value="accessoire">Accessoire</option>
+                        </optgroup>
+                        <optgroup label="Modes Homme">
+                          <option value="chaussureH">Chaussure</option>
+                          <option value="vetementH">Vetements</option>
+                          <option value="sacH">Sacs</option>
+                          <option value="accessoireH">Accessoire</option>
+                        </optgroup>
+                        <optgroup label="Technologies">
+                          <option value="materiels">Materiels</option>
+                          <option value="logiciel">Logiciel</option>
+                        </optgroup>
+                        <option value="autre">Autre</option>
                       </Form.Field>
                     </Form.Group>
                     <Form.Group widths="equal">
@@ -471,7 +490,7 @@ class addprodLayout extends React.Component {
         ) : (
           <p style={{ marginTop: 500 }}> desoler vos n est pas pour le moment un vendeur veilleur modifier votre status dans vos profil </p>
         )}
-      </div>
+      </Segment.Group>
     );
   }
 }

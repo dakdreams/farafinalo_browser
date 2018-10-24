@@ -25,7 +25,6 @@ import Lightbox from 'react-image-lightbox';
 import { Link } from 'react-router-dom';
 
 import BigMenu from '../responsive/menu';
-import config from '../config';
 import Comments from '../components/comment';
 import Tabeau from '../components/tableau';
 import MobileTableau from '../components/mobileTableau';
@@ -278,13 +277,9 @@ class product extends React.Component {
         {({ loading, error, data }) => {
           if (loading) {
             return (
-              <Segment>
-                <Dimmer active inverted>
-                  <Loader size="medium">Loading</Loader>
-                </Dimmer>
-
-                <Image src="https://react.semantic-ui.com/assets/images/wireframe/short-paragraph.png" />
-              </Segment>
+              <Dimmer active inverted>
+                <Loader size="medium">Loading</Loader>
+              </Dimmer>
             );
           }
           if (error) return `Error! ${error.message}`;
@@ -602,11 +597,7 @@ class product extends React.Component {
                             ribbon: true,
                           }}
                           style={{ height: '8em' }}
-                          src={
-                            profil
-                              ? `http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${profil}`
-                              : 'http://www.lisapoyakama.org/wp-content/uploads/2016/08/AshantiToZulu_100-1024x484.jpg'
-                          }
+                          src={profil ? `${profil}` : 'http://www.lisapoyakama.org/wp-content/uploads/2016/08/AshantiToZulu_100-1024x484.jpg'}
                         />
                       </Grid.Column>
                       <Grid.Column width={12}>
@@ -639,7 +630,7 @@ class product extends React.Component {
                                             size="medium"
                                             src={
                                               ownerAvatar
-                                                ? `http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${ownerAvatar}`
+                                                ? `${ownerAvatar}`
                                                 : 'http://www.lisapoyakama.org/wp-content/uploads/2016/08/AshantiToZulu_100-1024x484.jpg'
                                             }
                                           />

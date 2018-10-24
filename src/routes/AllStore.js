@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import _ from 'lodash';
 import { Grid, Container, Segment, Responsive, Search } from 'semantic-ui-react';
 
-import config from '../config';
 import BigMenu from '../responsive/menu';
 import StoreView from '../components/StoreView';
 import { allStoreQuery } from '../graphql/queries';
@@ -47,7 +46,7 @@ class AllStore extends React.Component {
       description: `${store.about.substr(0, 37).trim()} ...`,
       id: store.id,
       image: store.profil
-        ? `http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${store.profil}`
+        ? `${store.profil}`
         : 'http://www.lisapoyakama.org/wp-content/uploads/2016/08/AshantiToZulu_100-1024x484.jpg',
       // price: `${prod.prodprice} fcfa`,
     }));

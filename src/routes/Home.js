@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Container, Tab, Header, List, Image, Responsive, Loader, Dropdown } from 'semantic-ui-react';
+import { Grid, Container, Tab, Header, List, Image, Responsive, Loader, Dropdown, Segment } from 'semantic-ui-react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 import { graphql, compose, Query } from 'react-apollo';
@@ -146,7 +146,7 @@ class Home extends React.Component {
 
     const trigger2 = (
       <span>
-        <img width="53" height="53" alt="" src={'http://flexofytol.be/wp-content/uploads/2016/07/FLEXOFYTOL-icone-chaussures.png'} />
+        <img width="53" height="53" alt="" src={'https://image.flaticon.com/icons/svg/305/305114.svg'} />
       </span>
     );
 
@@ -341,18 +341,6 @@ class Home extends React.Component {
               Mobilier
             </Grid.Column>
             <Grid.Column textAlign="center">
-              <Dropdown trigger={trigger2} icon={null}>
-                <Dropdown.Menu>
-                  <Dropdown.Header icon="tags" content="Filter by tag" />
-                  <Dropdown.Divider />
-                  <Dropdown.Item label={{ color: 'red', empty: true, circular: true }} text="homme" />
-                  <Dropdown.Item label={{ color: 'blue', empty: true, circular: true }} text="femme" />
-                </Dropdown.Menu>
-              </Dropdown>
-              <br />
-              Chaussures
-            </Grid.Column>
-            <Grid.Column textAlign="center">
               <Dropdown trigger={trigger3} icon={null}>
                 <Dropdown.Menu>
                   <Dropdown.Header icon="tags" content="femme" />
@@ -371,6 +359,18 @@ class Home extends React.Component {
               </Dropdown>
               <br />
               Mode
+            </Grid.Column>
+            <Grid.Column textAlign="center">
+              <Dropdown trigger={trigger2} icon={null}>
+                <Dropdown.Menu>
+                  <Dropdown.Header icon="tags" content="Filter by tag" />
+                  <Dropdown.Divider />
+                  <Dropdown.Item label={{ color: 'red', empty: true, circular: true }} text="materiels" />
+                  <Dropdown.Item label={{ color: 'blue', empty: true, circular: true }} text="logiciels" />
+                </Dropdown.Menu>
+              </Dropdown>
+              <br />
+              Technologies
             </Grid.Column>
             <Grid.Column textAlign="center">
               <img
@@ -400,7 +400,7 @@ class Home extends React.Component {
     );
 
     return (
-      <div>
+      <Segment.Group>
         <Responsive {...Responsive.onlyMobile}>
           <div style={{ backgroundColor: '#fcfcfc' }}>
             <Container>
@@ -409,6 +409,7 @@ class Home extends React.Component {
             </Container>
           </div>
         </Responsive>
+
         {/* <Responsive {...Responsive.onlyTablet}>salut</Responsive> */}
         <Responsive minWidth={768}>
           <div style={{ backgroundColor: '#fcfcfc' }}>
@@ -417,7 +418,7 @@ class Home extends React.Component {
             <ComputerHome />
           </div>
         </Responsive>
-      </div>
+      </Segment.Group>
     );
   }
 }

@@ -18,7 +18,6 @@ class Comments extends React.Component {
   }
 
   render() {
-    const CLOUD_NAME = 'dg6zkrdqu';
     const { prodid } = this.state;
     const CommentsView = () => (
       <Query query={getProdCommentQuery} variables={{ prodid }}>
@@ -40,7 +39,7 @@ class Comments extends React.Component {
                   {comment.map(com => (
                     <Comment key={com.id}>
                       {com.usercommentavatar ? (
-                        <Comment.Avatar src={`http://res.cloudinary.com/${CLOUD_NAME}/image/upload/${com.usercommentavatar}`} />
+                        <Comment.Avatar src={`${com.usercommentavatar}`} />
                       ) : (
                         <Comment.Avatar src="https://www.goafricaonline.com/images/drapeaux/afrique.png" />
                       )}
@@ -86,7 +85,7 @@ class Comments extends React.Component {
                   {comment.map(com => (
                     <Comment key={com.id}>
                       {com.usercommentavatar ? (
-                        <Comment.Avatar src={`http://res.cloudinary.com/${CLOUD_NAME}/image/upload/${com.usercommentavatar}`} />
+                        <Comment.Avatar src={`${com.usercommentavatar}`} />
                       ) : (
                         <Comment.Avatar src="https://www.goafricaonline.com/images/drapeaux/afrique.png" />
                       )}

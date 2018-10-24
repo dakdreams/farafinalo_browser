@@ -1,8 +1,6 @@
 import React from 'react';
 import { Card, Image, Icon, Responsive, Segment } from 'semantic-ui-react';
 
-import config from '../config';
-
 class StoreView extends React.Component {
   constructor(props) {
     super(props);
@@ -25,7 +23,7 @@ class StoreView extends React.Component {
             style={{ height: '6em' }}
             src={
               this.state.storeProfil
-                ? `http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${this.state.storeProfil}`
+                ? `${this.state.storeProfil}`
                 : 'http://www.lisapoyakama.org/wp-content/uploads/2016/08/AshantiToZulu_100-1024x484.jpg'
             }
           />
@@ -33,14 +31,14 @@ class StoreView extends React.Component {
             style={{
               position: 'absolute',
               top: '27%',
-              left: '40%',
+              left: '37%',
               width: '40px',
               height: '40px',
             }}
             circular
             size="medium"
             src={
-              this.state.storeAvatar ? `http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${this.state.storeAvatar}` : '/afriqua.png'
+              this.state.storeAvatar ? `${this.state.storeAvatar}` : '/afriqua.png'
             }
           />
           <Card.Content style={{ backgroundColor: '#fcfcfc' }}>
@@ -50,7 +48,7 @@ class StoreView extends React.Component {
             <Card.Meta>
               <span style={{ fontSize: 'smaller' }}>{`${this.state.storeFirstName} ${this.state.storeSecondName}`}</span>
             </Card.Meta>
-            <Card.Description style={{ fontSize: 'smaller' }} >{this.state.storeAbout.substr(0, 37)}...</Card.Description>
+            {/* <Card.Description style={{ fontSize: 'smaller' }} >{this.state.storeAbout.substr(0, 37)}...</Card.Description> */}
           </Card.Content>
           <Card.Content extra style={{ backgroundColor: '#fcfcfc' }}>
             <a style={{ fontSize: 12 }}>
@@ -77,7 +75,7 @@ class StoreView extends React.Component {
             style={{ height: '180.453px' }}
             src={
               this.state.storeProfil
-                ? `http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${this.state.storeProfil}`
+                ? `${this.state.storeProfil}`
                 : 'http://www.lisapoyakama.org/wp-content/uploads/2016/08/AshantiToZulu_100-1024x484.jpg'
             }
           />
@@ -92,7 +90,7 @@ class StoreView extends React.Component {
             circular
             size="medium"
             src={
-              this.state.storeAvatar ? `http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${this.state.storeAvatar}` : '/afriqua.png'
+              this.state.storeAvatar ? `${this.state.storeAvatar}` : '/afriqua.png'
             }
           />
           <Card.Content style={{ backgroundColor: '#fcfcfc' }}>
@@ -129,7 +127,7 @@ class StoreView extends React.Component {
             style={{ height: '140px' }}
             src={
               this.state.storeProfil
-                ? `http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${this.state.storeProfil}`
+                ? `${this.state.storeProfil}`
                 : 'http://www.lisapoyakama.org/wp-content/uploads/2016/08/AshantiToZulu_100-1024x484.jpg'
             }
           />
@@ -144,7 +142,7 @@ class StoreView extends React.Component {
             circular
             size="medium"
             src={
-              this.state.storeAvatar ? `http://res.cloudinary.com/${config.CLOUDINARY.NAME}/image/upload/${this.state.storeAvatar}` : '/afriqua.png'
+              this.state.storeAvatar ? `${this.state.storeAvatar}` : '/afriqua.png'
             }
           />
           <Card.Content style={{ backgroundColor: '#fcfcfc' }}>

@@ -62,7 +62,7 @@ class Messages extends React.Component {
                   result.map(com => (
                     <Comment key={com.id}>
                       {com.followedavatar ? (
-                        <Comment.Avatar src={`http://res.cloudinary.com/${CLOUD_NAME}/image/upload/${com.followedavatar}`} />
+                        <Comment.Avatar src={`${com.followedavatar}`} />
                       ) : (
                         <Comment.Avatar src="https://www.goafricaonline.com/images/drapeaux/afrique.png" />
                       )}

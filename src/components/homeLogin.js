@@ -54,7 +54,7 @@ class HomeLogin extends React.Component {
           </div>
         ) : (
           <div>
-            <h4>INSCRIIPT TOI POUR PLUS D ESPERIENCE UTILISATEUR</h4>
+            <h4>Farafinalo</h4>
             <Image
               style={{ width: '230px', height: '230px', marginLeft: '8%' }}
               src="https://assets2.jiveon.com/core/2016.3.9.0.b96715f/images/jive-avatar-disabled.png"
