@@ -272,19 +272,19 @@ class Home extends React.Component {
 
     const trigger1 = (
       <span>
-        <img width="53" height="53" alt="" src={'/icon/chair.svg'} />
+        <img width="53" height="53" alt="" src={'/chair.svg'} />
       </span>
     );
 
     const trigger2 = (
       <span>
-        <img width="53" height="53" alt="" src={'/icon/idea.png'} />
+        <img width="53" height="53" alt="" src={'/idea.png'} />
       </span>
     );
 
     const trigger3 = (
       <span>
-        <img width="53" height="53" alt="" src={'/icon/mode.png'} />
+        <img width="53" height="53" alt="" src={'/mode.png'} />
       </span>
     );
 
@@ -534,7 +534,7 @@ class Home extends React.Component {
               Technologies
             </Grid.Column>
             <Grid.Column textAlign="center">
-              <img width="53" height="53" alt="" src={'/icon/supermarket.svg'} />
+              <img width="53" height="53" alt="" src={'/supermarket.svg'} />
               <br />
               Autre
             </Grid.Column>
