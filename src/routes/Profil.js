@@ -492,7 +492,7 @@ class Profil extends React.Component {
                     render: () => (
                       <Tab.Pane>
                         {product.length !== 0 ? (
-                          <Grid divided="vertically" block="true" style={{ marginRight: 8 }}>
+                          <Grid divided="vertically" block="true">
                             <Grid.Row columns={2}>
                               {product.map(prod => (
                                 <Grid.Column key={prod.id}>

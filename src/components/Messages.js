@@ -42,14 +42,13 @@ class Messages extends React.Component {
   };
 
   render() {
-    const CLOUD_NAME = 'dg6zkrdqu';
     const { prodowner, text, userbusinessname } = this.state;
 
     const FollowCommentView = () => (
       <Query query={getFollowerCommentQuery}>
         {({ loading, error, data }) => {
           if (loading) {
-            return <Loader active inline='centered' />;
+            return <Loader active inline="centered" />;
           }
           if (error) return `Error! ${error.message}`;
 
@@ -109,7 +108,7 @@ class Messages extends React.Component {
       <Query query={getOwnerCommentQuery} variables={{ prodowner }}>
         {({ loading, error, data }) => {
           if (loading) {
-            return <Loader active inline='centered' />;
+            return <Loader active inline="centered" />;
           }
           if (error) return `Error! ${error.message}`;
 
@@ -122,7 +121,7 @@ class Messages extends React.Component {
                   comment.map(com => (
                     <Comment key={com.id}>
                       {com.usercommentavatar ? (
-                        <Comment.Avatar src={`http://res.cloudinary.com/${CLOUD_NAME}/image/upload/${com.usercommentavatar}`} />
+                        <Comment.Avatar src={`${com.usercommentavatar}`} />
                       ) : (
                         <Comment.Avatar src="https://www.goafricaonline.com/images/drapeaux/afrique.png" />
                       )}
@@ -166,7 +165,7 @@ class Messages extends React.Component {
     );
 
     return (
-      <div>
+      <Container text>
         <Header as="h3" dividing>
           messages
         </Header>
@@ -189,9 +188,8 @@ class Messages extends React.Component {
         ) : (
           ''
         )}
-
         {userbusinessname ? <CommentsView /> : <FollowCommentView />}
-      </div>
+      </Container>
     );
   }
 }

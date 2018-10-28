@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import styled from 'styled-components';
-import { Grid, Container, Segment, Responsive, Header, Loader, Image, Dimmer } from 'semantic-ui-react';
+import { Grid, Container, Segment, Responsive, Header, Loader, Dimmer } from 'semantic-ui-react';
 
 import BigMenu from '../responsive/menu';
 import Product from '../components/homeProduct';
@@ -10,7 +10,7 @@ import { cathegoryAllProductQuery } from '../graphql/queries';
 
 const DivWrapMobile = styled.div`
   position: relative;
-  top: 1em;
+  top: 2.5em;
   width: 100%;
   border: none;
 `;
@@ -28,7 +28,22 @@ class Cathegory extends Component {
   auth = async () => {};
   render() {
     const cathegory = this.props.match.params.cat;
-    const myCat = ['meuble', 'vestimentaire'];
+    const myCat = [
+      'meuble',
+      'vestimentaire',
+      'lit',
+      'camape',
+      'decoration',
+      'chaussure-femme',
+      'vestimantaire-femme',
+      'sacs-femme',
+      'accessoire-femme',
+      'chaussure-homme',
+      'vestimantaire-homme',
+      'accessoire-homme',
+      'materiels',
+      'logiciel',
+    ];
 
     if (!myCat.includes(cathegory)) {
       this.props.history.push('/');
@@ -39,13 +54,9 @@ class Cathegory extends Component {
         {({ loading, error, data }) => {
           if (loading) {
             return (
-              <Segment>
-                <Dimmer active inverted>
-                  <Loader size="medium">Loading</Loader>
-                </Dimmer>
-
-                <Image src="https://react.semantic-ui.com/assets/images/wireframe/short-paragraph.png" />
-              </Segment>
+              <Dimmer active inverted>
+                <Loader size="medium">Loading</Loader>
+              </Dimmer>
             );
           }
           if (error) return `Error! ${error.message}`;
@@ -85,43 +96,34 @@ class Cathegory extends Component {
       <Query query={cathegoryAllProductQuery} variables={{ cathegory }}>
         {({ loading, error, data }) => {
           if (loading) {
-            return (
-              <Segment>
-                <Dimmer active inverted>
-                  <Loader size="medium">Loading</Loader>
-                </Dimmer>
-
-                <Image src="https://react.semantic-ui.com/assets/images/wireframe/short-paragraph.png" />
-              </Segment>
-            );
+            return <Loader style={{ marginTop: '12em', marginLeft: 165 }} active inline="centered" />;
           }
           if (error) return `Error! ${error.message}`;
 
           const { products } = data.cathegoryAllProduct;
           return (
             <Grid>
-              <Grid.Column>
-                <Header as="h3" style={{ backgroundColor: '#f8453e', color: 'white' }} block="true">
-                  Top Des Vente {cathegory}
-                </Header>
-                <Grid divided="vertically">
-                  <Grid.Row columns={2}>
-                    {/* <div>{ product.map(prod => (prod.prodimages)) }</div> */}
-                    {products.map(prod => (
-                      <Grid.Column key={prod.id}>
-                        <MobileHomeProduct
-                          key={prod.id}
-                          prodName={prod.prodname}
-                          proDescription={prod.prodescription}
-                          imagelink={prod.prodimages[0]}
-                          prodPrice={prod.prodprice}
-                          prodId={prod.id}
-                        />
-                      </Grid.Column>
-                    ))}
-                  </Grid.Row>
-                </Grid>
-              </Grid.Column>
+              <Header as="h3" size="huge" style={{ backgroundColor: '#f8453e', color: 'white' }} block="true">
+                Selection {cathegory}
+              </Header>
+
+              <Grid divided="vertically">
+                <Grid.Row columns={2}>
+                  {/* <div>{ product.map(prod => (prod.prodimages)) }</div> */}
+                  {products.map(prod => (
+                    <Grid.Column key={prod.id}>
+                      <MobileHomeProduct
+                        key={prod.id}
+                        prodName={prod.prodname}
+                        proDescription={prod.prodescription}
+                        imagelink={prod.prodimages[0]}
+                        prodPrice={prod.prodprice}
+                        prodId={prod.id}
+                      />
+                    </Grid.Column>
+                  ))}
+                </Grid.Row>
+              </Grid>
             </Grid>
           );
         }}

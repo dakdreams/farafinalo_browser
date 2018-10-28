@@ -64,7 +64,7 @@ class MenuMobile extends React.Component {
             <Link to="/">Accueille</Link>
           </Dropdown.Item>
           <Dropdown.Item>
-            <Link to="/allstore">Magasin</Link>
+            <Link to="/allstore">Store</Link>
           </Dropdown.Item>
           <Dropdown.Item>
             {firstname ? (
@@ -109,7 +109,7 @@ class MenuMobile extends React.Component {
             <Link to="/">Accueille</Link>
           </Dropdown.Item>
           <Dropdown.Item>
-            <Link to="/allstore">Magasins</Link>
+            <Link to="/allstore">Store</Link>
           </Dropdown.Item>
           <Dropdown.Item>
             <Link to="/addproduct">Ajouter Produit</Link>
@@ -127,7 +127,7 @@ class MenuMobile extends React.Component {
     const searchValue = products.map(prod => ({
       title: prod.prodname,
       cathegory: prod.prodcathegory,
-      description: `${prod.prodescription.substr(0, 40).trim()} ...`,
+      // description: `${prod.prodescription.substr(0, 40).trim()} ...`,
       image: prod.prodimages[0],
       price: `${prod.prodprice} fcfa`,
     }));

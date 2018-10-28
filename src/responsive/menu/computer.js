@@ -125,7 +125,7 @@ class MenuExampleAttached extends React.Component {
             <Link to="/">Accueille</Link>
           </Dropdown.Item>
           <Dropdown.Item>
-            <Link to="/allstore">Magasins</Link>
+            <Link to="/allstore">Store</Link>
           </Dropdown.Item>
           <Dropdown.Item>
             <Link to="/addproduct">Ajouter Produit</Link>

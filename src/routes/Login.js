@@ -116,7 +116,7 @@ class Login extends React.Component {
                   <Button color="black" onClick={this.Validation} style={{ padding: 2 }}>
                     <FaceBookConnect />
                   </Button>
-                  <Button.Or text="Ou" />
+                  <Button.Or text="ou" />
                   <Button color="black" onClick={this.Validation} style={{ padding: 2 }}>
                     <GoogleConnect />
                   </Button>

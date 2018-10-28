@@ -89,12 +89,13 @@ class AllStore extends React.Component {
                       onSearchChange={_.debounce(handleSearchChange, 500, { leading: true })}
                       results={results}
                       value={value}
+                      placeholder="Store..."
                       size="mini"
                       {...this.props}
                     />
                   </Grid.Column>
                   <Grid.Column floated="right" width={8} style={{ textAlign: 'center' }}>
-                    votre magasin
+                    store
                   </Grid.Column>
                 </Grid>
               </StoreSearchMobile>
@@ -134,7 +135,7 @@ class AllStore extends React.Component {
                       results={results}
                       value={value}
                       size="mini"
-                      placeholder='magasin' 
+                      placeholder="Store..."
                       {...this.props}
                     />
                   </Grid.Column>
@@ -175,6 +176,7 @@ class AllStore extends React.Component {
                       onSearchChange={_.debounce(handleSearchChange, 500, { leading: true })}
                       results={results}
                       value={value}
+                      placeholder="Store..."
                       size="tiny"
                       {...this.props}
                     />

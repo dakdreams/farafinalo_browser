@@ -50,13 +50,11 @@ class updating extends React.Component {
     });
 
     const { firstname, secondname, email, about, business, statu, tell2, tell } = this.state;
-    console.log(this.state);
     const response = await this.props.updateMutation({
       variables: { firstname, secondname, email, about, business, statu, tell2, tell },
     });
 
     const { errors } = response.data.updating;
-    console.log(response);
 
     if (errors) {
       const err = {};
@@ -87,8 +85,6 @@ class updating extends React.Component {
 
     const response = await axios.post(config.CLOUDINARY.URL, formData);
 
-    console.log(response);
-
     const clourl = await response.data.secure_url;
 
     // const clourl = await `v${response.data.version}/${response.data.public_id}.${response.data.format}`;
@@ -97,14 +93,13 @@ class updating extends React.Component {
     // const path = preview.substring(27);
     // console.log(path);
 
-    const graphqlResponse = await this.props
+    await this.props
       .uploadFileMutation({
         variables: {
           avatar: clourl,
         },
       })
       .then(this.setState({ loading1: false, valide1: true, avatar: clourl }));
-    console.log(graphqlResponse);
   };
 
   onDrop2 = async ([file]) => {
@@ -117,27 +112,23 @@ class updating extends React.Component {
 
     const response = await axios.post(config.CLOUDINARY.URL, formData);
 
-    console.log(response);
-
     const clourl2 = await response.data.secure_url;
 
     // const { preview, name, type, size } = file;
     // const path = preview.substring(27);
     // console.log(path);
 
-    const graphqlResponse = await this.props
+    await this.props
       .uploadFileMutation2({
         variables: {
           profil: clourl2,
         },
       })
       .then(this.setState({ loading2: false, valide2: true, profil: clourl2 }));
-    console.log(graphqlResponse);
   };
 
   getGender = async event => {
     await this.setState({ statu: event.target.value });
-    console.log(this.state.statu);
   };
 
   auth = async () => {

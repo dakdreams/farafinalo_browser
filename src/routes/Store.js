@@ -283,7 +283,7 @@ class Store extends React.Component {
                     style={{
                       position: 'absolute',
                       top: '98%',
-                      left: '36%',
+                      left: '34%',
                     }}
                   >
                     {id ? (
