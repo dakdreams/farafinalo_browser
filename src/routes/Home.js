@@ -272,19 +272,19 @@ class Home extends React.Component {
 
     const trigger1 = (
       <span>
-        <img width="53" height="53" alt="" src={'/chair.svg'} />
+        <img width="53" height="53" alt="chair" src={'https://res.cloudinary.com/dg6zkrdqu/image/upload/v1540757763/farafinalo-icon/chair.svg'} />
       </span>
     );
 
     const trigger2 = (
       <span>
-        <img width="53" height="53" alt="" src={'/idea.png'} />
+        <img width="53" height="53" alt="idea" src={'https://res.cloudinary.com/dg6zkrdqu/image/upload/v1540757764/farafinalo-icon/idea.png'} />
       </span>
     );
 
     const trigger3 = (
       <span>
-        <img width="53" height="53" alt="" src={'/mode.png'} />
+        <img width="53" height="53" alt="mode" src={'https://res.cloudinary.com/dg6zkrdqu/image/upload/v1540757771/farafinalo-icon/mode.png'} />
       </span>
     );
 
@@ -534,7 +534,7 @@ class Home extends React.Component {
               Technologies
             </Grid.Column>
             <Grid.Column textAlign="center">
-              <img width="53" height="53" alt="" src={'/supermarket.svg'} />
+              <img width="53" height="53" alt="supermarket" src={'https://res.cloudinary.com/dg6zkrdqu/image/upload/v1540757767/farafinalo-icon/supermarket.svg'} />
               <br />
               Autre
             </Grid.Column>
