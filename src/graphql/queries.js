@@ -148,9 +148,10 @@ const updateProductQuery = gql`
 `;
 
 const cathegoryAllProductQuery = gql`
-  query($cathegory: String!) {
-    cathegoryAllProduct(cathegory: $cathegory) {
+  query($cathegory: String!, $limit: Int, $offset: Int) {
+    cathegoryAllProduct(cathegory: $cathegory, limit: $limit, offset:$offset) {
       ok
+      productCount
       products {
         id
         prodname

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import styled from 'styled-components';
-import { Grid, Container, Segment, Responsive, Header, Loader, Dimmer } from 'semantic-ui-react';
+import { Grid, Container, Segment, Responsive, Header, Loader, Dimmer, Pagination } from 'semantic-ui-react';
 
 import BigMenu from '../responsive/menu';
 import Product from '../components/homeProduct';
@@ -18,15 +18,33 @@ const DivWrapMobile = styled.div`
 class Cathegory extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      activePage: 1,
+      boundaryRange: 1,
+      siblingRange: 1,
+      showEllipsis: false,
+      showFirstAndLastNav: true,
+      showPreviousAndNextNav: true,
+      limito: 2,
+      offsetCount: 0,
+      // totalPages: 10,
+    };
   }
 
   componentDidMount() {
     this.auth();
   }
 
+  handlePaginationChange = (e, { activePage }) => {
+    // determne offset
+    // const offsetCount =
+    // selct data of the page activate
+    this.setState({ activePage });
+  };
+
   auth = async () => {};
   render() {
+    const { activePage, boundaryRange, siblingRange, showEllipsis, showFirstAndLastNav, showPreviousAndNextNav } = this.state;
     const cathegory = this.props.match.params.cat;
     const myCat = [
       'meuble',
@@ -50,62 +68,108 @@ class Cathegory extends Component {
     }
 
     const ComputerProduct = () => (
-      <Query query={cathegoryAllProductQuery} variables={{ cathegory }}>
-        {({ loading, error, data }) => {
+      <Query query={cathegoryAllProductQuery} variables={{ cathegory, offset: this.state.offsetCount, limit: this.state.limito }}>
+        {({ loading, error, data, refetch }) => {
           if (loading) {
             return (
-              <Dimmer active inverted>
+              <Dimmer style={{ marginTop: '5em' }} active inverted>
                 <Loader size="medium">Loading</Loader>
               </Dimmer>
             );
           }
           if (error) return `Error! ${error.message}`;
 
-          const { products } = data.cathegoryAllProduct;
+          const { products, productCount } = data.cathegoryAllProduct;
+          const returnTotalPage = Math.round(productCount / 2);
+          const handlePaginationChange1 = (e, { activePage }) => {
+            // determne offset
+            const offsetCount2 = activePage - 1;
+            // selct data of the page activate
+            this.setState({ activePage, limito: 2, offsetCount: offsetCount2 });
+            refetch();
+          };
           return (
-            <div style={{ marginTop: '5em' }}>
-              <Grid.Column>
-                <Header as="h3" style={{ backgroundColor: '#f8453e', color: 'white' }} block>
-                  Top Des Vente {cathegory}
-                </Header>
-                <Grid divided="vertically">
-                  <Grid.Row columns={4}>
-                    {/* <div>{ product.map(prod => (prod.prodimages)) }</div> */}
-                    {products.map(prod => (
-                      <Grid.Column key={prod.id}>
-                        <Product
-                          key={prod.id}
-                          prodName={prod.prodname}
-                          proDescription={prod.prodescription}
-                          imagelink={prod.prodimages[0]}
-                          prodPrice={prod.prodprice}
-                          prodId={prod.id}
-                        />
-                      </Grid.Column>
-                    ))}
-                  </Grid.Row>
-                </Grid>
-              </Grid.Column>
-            </div>
+            <Grid divided="vertically" centered columns={5} style={{ marginTop: '1em' }}>
+              <Grid.Row columns={4}>
+                {/* <div>{ product.map(prod => (prod.prodimages)) }</div> */}
+                {products.map(prod => (
+                  <Grid.Column key={prod.id}>
+                    <Product
+                      key={prod.id}
+                      prodName={prod.prodname}
+                      proDescription={prod.prodescription}
+                      imagelink={prod.prodimages[0]}
+                      prodPrice={prod.prodprice}
+                      prodId={prod.id}
+                    />
+                  </Grid.Column>
+                ))}
+              </Grid.Row>
+              <Grid.Row centered>
+                {returnTotalPage > 1 ? (
+                  <Pagination
+                    activePage={activePage}
+                    boundaryRange={boundaryRange}
+                    onPageChange={handlePaginationChange1}
+                    size="mini"
+                    siblingRange={siblingRange}
+                    totalPages={returnTotalPage}
+                    // Heads up! All items are powered by shorthands, if you want to hide one of them, just pass `null` as value
+                    ellipsisItem={showEllipsis ? undefined : null}
+                    firstItem={showFirstAndLastNav ? undefined : null}
+                    lastItem={showFirstAndLastNav ? undefined : null}
+                    prevItem={showPreviousAndNextNav ? undefined : null}
+                    nextItem={showPreviousAndNextNav ? undefined : null}
+                  />
+                ) : (
+                  'cathegirie end'
+                )}
+              </Grid.Row>
+            </Grid>
           );
         }}
       </Query>
     );
 
+    const ComputerProductView = () => (
+      <Grid style={{ marginTop: 40 }}>
+        <Grid.Row centered tablet={15} computer={13}>
+          <Header as="h3" style={{ backgroundColor: '#f8453e', color: 'white' }} block>
+            Selection de {cathegory}
+          </Header>
+        </Grid.Row>
+        <Grid.Row centered tablet={15} computer={16}>
+          <ComputerProduct />
+        </Grid.Row>
+        {/* <Header as="h3" style={{ backgroundColor: '#f8453e', color: 'white' }} block>
+            Top Des Vente {cathegory}
+          </Header>
+          <ComputerProduct /> */}
+      </Grid>
+    );
+
     const MobileProduct = () => (
-      <Query query={cathegoryAllProductQuery} variables={{ cathegory }}>
-        {({ loading, error, data }) => {
+      <Query query={cathegoryAllProductQuery} variables={{ cathegory, offset: this.state.offsetCount, limit: this.state.limito }}>
+        {({ loading, error, data, refetch }) => {
           if (loading) {
             return <Loader style={{ marginTop: '12em', marginLeft: 165 }} active inline="centered" />;
           }
           if (error) return `Error! ${error.message}`;
 
-          const { products } = data.cathegoryAllProduct;
+          const { products, productCount } = data.cathegoryAllProduct;
+          const returnTotalPage = Math.round(productCount / 2);
+          const handlePaginationChange1 = async (e, { activePage }) => {
+            // determne offset
+            const offsetCount2 = activePage - 1;
+            // selct data of the page activate
+            await this.setState({ activePage, limito: 2, offsetCount: offsetCount2 });
+            refetch();
+          };
           return (
             <Grid>
-              <Header as="h3" size="huge" style={{ backgroundColor: '#f8453e', color: 'white' }} block="true">
+              {/* <Header as="h3" size="huge" style={{ backgroundColor: '#f8453e', color: 'white' }} block="true">
                 Selection {cathegory}
-              </Header>
+              </Header> */}
 
               <Grid divided="vertically">
                 <Grid.Row columns={2}>
@@ -124,6 +188,26 @@ class Cathegory extends Component {
                   ))}
                 </Grid.Row>
               </Grid>
+              <Grid.Row centered>
+                {returnTotalPage > 1 ? (
+                  <Pagination
+                    activePage={activePage}
+                    boundaryRange={boundaryRange}
+                    onPageChange={handlePaginationChange1}
+                    size="mini"
+                    siblingRange={siblingRange}
+                    totalPages={returnTotalPage}
+                    // Heads up! All items are powered by shorthands, if you want to hide one of them, just pass `null` as value
+                    ellipsisItem={showEllipsis ? undefined : null}
+                    firstItem={showFirstAndLastNav ? undefined : null}
+                    lastItem={showFirstAndLastNav ? undefined : null}
+                    prevItem={showPreviousAndNextNav ? undefined : null}
+                    nextItem={showPreviousAndNextNav ? undefined : null}
+                  />
+                ) : (
+                  'cathegorie end '
+                )}
+              </Grid.Row>
             </Grid>
           );
         }}
@@ -132,6 +216,9 @@ class Cathegory extends Component {
 
     const MobileCathegory = () => (
       <DivWrapMobile>
+        <Header as="h3" size="huge" style={{ backgroundColor: '#f8453e', color: 'white' }} block>
+          Selection {cathegory}
+        </Header>
         <MobileProduct />
       </DivWrapMobile>
     );
@@ -139,7 +226,7 @@ class Cathegory extends Component {
     return (
       <Segment.Group>
         <Responsive {...Responsive.onlyMobile}>
-          <Container style={{ backgroundColor: '#fcfcfc', width: 'auto', height: 'auto', position: 'absolute' }}>
+          <Container>
             <BigMenu />
             <MobileCathegory />
           </Container>
@@ -148,9 +235,8 @@ class Cathegory extends Component {
         <Responsive {...Responsive.onlyComputer}>
           <div style={{ backgroundColor: '#fcfcfc' }}>
             <BigMenu />
-            <Container>
-              <ComputerProduct />
-            </Container>
+
+            <ComputerProductView />
           </div>
         </Responsive>
       </Segment.Group>

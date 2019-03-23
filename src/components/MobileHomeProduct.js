@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Image, Grid, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import NumberFormat from 'react-number-format';
 
 class MobileHomeProduct extends React.Component {
   constructor(props) {
@@ -18,14 +19,21 @@ class MobileHomeProduct extends React.Component {
   render() {
     return (
       <Link to={`/product/${this.state.prodid}`}>
-        <Card key={this.state.prodid} href={'#'}>
+        <Card raised key={this.state.prodid} href={'#'}>
           <Image style={{ height: '150.453px' }} src={this.state.url} />
-          <Card.Content extra>
+          <Card.Content style={{ fontWeight: 1000, borderWidth: 0 }} extra>
             <Grid.Row>
               {this.state.owner ? (
                 <div>
                   <Grid.Column floated="left" width={14}>
-                    <h5 style={{ fontSize: 'x-smaller' }}>{this.state.price} Fcfa</h5>
+                    <NumberFormat
+                      style={{ fontSize: 'x-smaller' }}
+                      value={this.state.price}
+                      displayType={'text'}
+                      thousandSeparator=" "
+                      suffix={' Fcfa'}
+                    />
+                    {/* <h5 style={{ fontSize: 'x-smaller' }}>{this.state.price} Fcfa</h5> */}
                   </Grid.Column>
 
                   <Grid.Column floated="right" width={2}>
@@ -37,12 +45,19 @@ class MobileHomeProduct extends React.Component {
               ) : (
                 <div>
                   <Grid.Column floated="left" width={14}>
-                    <h5 style={{ fontSize: 'x-smaller' }}>{this.state.price} Fcfa</h5>
+                    <NumberFormat
+                      style={{ fontSize: 'x-smaller' }}
+                      value={this.state.price}
+                      displayType={'text'}
+                      thousandSeparator=" "
+                      suffix={' Fcfa'}
+                    />
+                    {/* <h5 style={{ fontSize: 'x-smaller' }}>{this.state.price} Fcfa</h5> */}
                   </Grid.Column>
 
-                  <Grid.Column floated="right" width={2}>
+                  {/* <Grid.Column floated="right" width={2}>
                     <Icon name="users" />
-                  </Grid.Column>
+                  </Grid.Column> */}
                 </div>
               )}
             </Grid.Row>

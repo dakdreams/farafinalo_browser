@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Icon, Image, Grid, Responsive } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import NumberFormat from 'react-number-format';
 
 class CardExampleCard extends React.Component {
   constructor(props) {
@@ -21,14 +22,20 @@ class CardExampleCard extends React.Component {
       <div>
         <Responsive {...Responsive.onlyMobile}>
           <Link to={`/product/${this.state.prodid}`}>
-            <Card key={this.state.prodid} href={'#'}>
+            <Card raised key={this.state.prodid} href={'#'}>
               <Image style={{ height: '150.453px' }} src={this.state.url} />
               <Card.Content extra>
                 <Grid.Row>
                   {this.state.owner ? (
                     <div>
                       <Grid.Column floated="left" width={14}>
-                        <h5 style={{ fontSize: 'x-smaller' }}>{this.state.price} Fcfa</h5>
+                        <NumberFormat
+                          style={{ fontSize: 'x-smaller' }}
+                          value={this.state.price}
+                          displayType={'text'}
+                          thousandSeparator=" "
+                          suffix={' Fcfa'}
+                        />
                       </Grid.Column>
 
                       <Grid.Column floated="right" width={2}>
@@ -40,12 +47,18 @@ class CardExampleCard extends React.Component {
                   ) : (
                     <div>
                       <Grid.Column floated="left" width={14}>
-                        <h5 style={{ fontSize: 'x-smaller' }}>{this.state.price} Fcfa</h5>
+                        <NumberFormat
+                          style={{ fontSize: 'x-smaller' }}
+                          value={this.state.price}
+                          displayType={'text'}
+                          thousandSeparator=" "
+                          suffix={' Fcfa'}
+                        />
                       </Grid.Column>
 
-                      <Grid.Column floated="right" width={2}>
+                      {/* <Grid.Column floated="right" width={2}>
                         <Icon name="users" />
-                      </Grid.Column>
+                      </Grid.Column> */}
                     </div>
                   )}
                 </Grid.Row>
@@ -67,7 +80,7 @@ class CardExampleCard extends React.Component {
               <Card.Content extra>
                 <Grid>
                   <Grid.Column floated="left" width={8}>
-                    <p>{this.state.price} Fcfa</p>
+                    <NumberFormat style={{ fontWeight: 900 }} value={this.state.price} displayType={'text'} thousandSeparator=" " suffix={' Fcfa'} />
                   </Grid.Column>
                   <Grid.Column floated="right" width={8}>
                     {this.state.noOwner ? (
@@ -95,10 +108,17 @@ class CardExampleCard extends React.Component {
                 </Card.Meta>
                 <Card.Description>{text}...</Card.Description>
               </Card.Content>
-              <Card.Content extra>
+              <Card.Content style={{ fontWeight: 1000 }} extra>
                 <Grid>
                   <Grid.Column floated="left" width={8}>
-                    <p>{this.state.price} Fcfa</p>
+                    {/* <p>{this.state.price} Fcfa</p> */}
+                    <NumberFormat
+                      value={this.state.price}
+                      displayType={'text'}
+                      thousandSeparator=" "
+                      suffix={' Fcfa'}
+                      // renderText={value => <div style={{ fontSize: 'x-smaller', fontWeight: 900 }}>{value}</div>}
+                    />
                   </Grid.Column>
                   <Grid.Column floated="right" width={8}>
                     {this.state.noOwner ? (

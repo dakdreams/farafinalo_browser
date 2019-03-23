@@ -297,7 +297,7 @@ class Home extends React.Component {
           return (
             <div>
               <Responsive {...Responsive.onlyMobile}>
-                <Grid divided="vertically" block="true">
+                <Grid divided="vertically" block>
                   <Grid.Row columns={2}>
                     {data.allProduct.products.map(prod => (
                       <Grid.Column key={prod.id}>
@@ -505,7 +505,7 @@ class Home extends React.Component {
                     <Link to="/product/cathegory/chaussure-homme">Chaussure</Link>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Link to="/product/cathegory/vestimantaire-homme">Vestimantaire</Link>
+                    <Link to="/product/cathegory/vestimentaire">Vestimentaire</Link>
                   </Dropdown.Item>
                   <Dropdown.Item>
                     <Link to="/product/cathegory/accessoire-homme">Accessoire</Link>

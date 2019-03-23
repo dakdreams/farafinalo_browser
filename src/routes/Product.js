@@ -23,6 +23,7 @@ import Slider from 'react-slick';
 import uuidv4 from 'uuid/v4';
 import Lightbox from 'react-image-lightbox';
 import { Link } from 'react-router-dom';
+import NumberFormat from 'react-number-format';
 
 import BigMenu from '../responsive/menu';
 import Comments from '../components/comment';
@@ -380,7 +381,7 @@ class product extends React.Component {
                 </Grid.Row>
 
                 <Grid.Column style={{ padding: 0, color: 'red', fontSize: 16 }} textAlign="center" width={15}>
-                  {prodprice} Fcfa
+                  <NumberFormat value={prodprice} displayType={'text'} thousandSeparator=" " suffix={' Fcfa'} />
                 </Grid.Column>
 
                 <Grid.Row columns={2}>
@@ -697,7 +698,7 @@ class product extends React.Component {
                         </Statistic.Value>
                       </Statistic>
                       <Grid.Column style={{ padding: 0, marginTop: 0, color: 'red', fontSize: 20 }} textAlign="center" width={15}>
-                        {prodprice} Fcfa
+                        <NumberFormat value={prodprice} displayType={'text'} thousandSeparator=" " suffix={' Fcfa'} />
                       </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>
