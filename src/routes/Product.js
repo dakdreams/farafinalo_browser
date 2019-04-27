@@ -367,7 +367,7 @@ class product extends React.Component {
                     <Slider {...settings2}>
                       {prodimages.map(url => (
                         <div key={uuidv4()}>
-                          <img src={url} width="190" height="150" onClick={() => this.setState({ isOpen: true, autoplay: false })} alt="" />
+                          <img src={url} width="190" height="190" onClick={() => this.setState({ isOpen: true, autoplay: false })} alt="" />
                         </div>
                       ))}
                     </Slider>
@@ -398,8 +398,9 @@ class product extends React.Component {
                       <Modal trigger={<Button size="tiny">Mes Contacts</Button>} basic size="small" closeIcon>
                         <Header icon="call square" content="Appeler pour plus d info" />
                         <Modal.Content>
-                          <p>
-                            <a style={{ fontSize: 20 }}>{tell2}</a>
+                          <p style={{ fontSize: 20 }}>
+                            <NumberFormat value={tell2} displayType={'text'} format="## ## ## ##" />
+                            {/* <a style={{ fontSize: 20 }}>{tell2}</a> */}
                           </p>
                         </Modal.Content>
                         <Modal.Actions>
@@ -642,13 +643,13 @@ class product extends React.Component {
                                               {business}
                                             </Header>
                                             <a style={{ fontSize: 30, padding: 15 }}>
-                                              {' '}
-                                              <Icon name="phone" /> {tell2}
-                                            </a>{' '}
+                                              <Icon name="phone" />
+                                              <NumberFormat value={tell2} displayType={'text'} format="## ## ## ##" />
+                                            </a>
                                             <br />
                                             <a style={{ fontSize: 30, padding: 15 }}>
-                                              {' '}
-                                              <Icon name="phone" /> {tell}
+                                              <Icon name="phone" />
+                                              <NumberFormat value={tell} displayType={'text'} format="## ## ## ##" />
                                             </a>
                                           </div>
                                         </Grid.Column>

@@ -407,6 +407,8 @@ class addprodLayout extends React.Component {
                         <optgroup label="Mobilies">
                           <option value="decoration">Decoration</option>
                           <option value="lit">Lit</option>
+                          <option value="tableau">tableau</option>
+                          <option value="porcelaine">porcelaine</option>
                           <option value="canape">Canape</option>
                         </optgroup>
                         <optgroup label="Modes Femme">
