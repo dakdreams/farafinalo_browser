@@ -12,7 +12,6 @@ import Home from './Home';
 import Cathegory from './Cathegory';
 import Store from './Store';
 import AllStore from './AllStore';
-import About from './About';
 
 const isAuthenticated = () => {
   const token = localStorage.getItem('token');
@@ -50,7 +49,6 @@ export default () => (
       <Route path="/" exact component={Home} />
       <Route path="/register" exact component={Register} /> 
       <Route path="/login" exact component={Login} />
-      <Route path="/about" exact component={About} />
       <PrivateRoute path="/profil" exact component={Profil} />
       <PrivateRoute path="/addproduct" exact component={Addprod} />
       <Route path="/product/cathegory/:cat" exact component={Cathegory} /> 

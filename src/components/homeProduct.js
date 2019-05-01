@@ -1,6 +1,5 @@
 import React from 'react';
-import { Card, Image, Responsive, Label } from 'semantic-ui-react';
-import NumberFormat from 'react-number-format';
+import { Card, Image, Grid, Rating, Responsive, Label } from 'semantic-ui-react';
 
 class HomeProduct extends React.Component {
   constructor(props) {
@@ -19,31 +18,24 @@ class HomeProduct extends React.Component {
       <a href={`/product/${this.state.name}/${this.state.prodid}`}>
         <Responsive {...Responsive.onlyTablet}>
           <div>
-            <Label size="mini" style={{ position: 'absolute', zIndex: 1, top: '1%', left: '51%' }} as="a" color="red" tag>
+            <Label size='mini' style={{ position: 'absolute', zIndex: 1, top: '1%', left: '51%' }} as="a" color="red" tag>
               {this.state.price} Fcfa
             </Label>
             <Image style={{ height: 170 }} fluid src={this.state.url} />
           </div>
         </Responsive>
         <Responsive {...Responsive.onlyComputer}>
-          <Card raised link key={this.state.prodid}>
+          <Card link key={this.state.prodid}>
             <Image style={{ height: '206.453px' }} src={this.state.url} />
-            <Card.Content style={{ fontWeight: 1000 }} extra>
-              <NumberFormat
-                value={this.state.price}
-                displayType={'text'}
-                thousandSeparator=" "
-                suffix={' Fcfa'}
-              />
-              {/* <h3>{this.state.price} Fcfa</h3> */}
-              {/* <Grid>
+            <Card.Content extra>
+              <Grid>
                 <Grid.Column floated="left" width={8}>
                   <h3>{this.state.price} Fcfa</h3>
                 </Grid.Column>
                 <Grid.Column floated="right" width={8}>
                   <Rating icon="star" defaultRating={3} maxRating={5} disabled />
                 </Grid.Column>
-              </Grid> */}
+              </Grid>
             </Card.Content>
           </Card>
         </Responsive>
