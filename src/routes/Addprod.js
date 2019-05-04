@@ -404,24 +404,30 @@ class addprodLayout extends React.Component {
                       defaultValue={prodcathegory}
                     /> */}
                       <Form.Field label="cathegorie de produit:" control="select" value={prodcathegory} onChange={this.getCathegorie}>
-                        <optgroup label="Mobilies">
-                          <option value="decoration">Decoration</option>
+                        <optgroup label="Ameublement">             
                           <option value="lit">Lit</option>
                           <option value="tableau">tableau</option>
                           <option value="porcelaine">porcelaine</option>
                           <option value="canape">Canape</option>
+                          <option value="armoires">Armoires</option>
+                          <option value="tables-manger">Tables a manger</option>
+                          <option value="ureaux">Bureaux</option>
+                          <option value="decoration">Decoration</option>
+                          <option value="autre-ameublement">Autre</option>
                         </optgroup>
                         <optgroup label="Modes Femme">
-                          <option value="chaussureF">Chaussure</option>
-                          <option value="vetementF">Vetements</option>
-                          <option value="sacF">Sacs</option>
-                          <option value="accessoire">Accessoire</option>
+                          <option value="chaussure-femme">Chaussure</option>
+                          <option value="vestimantaire-femme">Vetements</option>
+                          <option value="sac">Sacs</option>
+                          <option value="accessoire-femme">Accessoire</option>
+                          <option value="Autre-femme">Autre</option>
                         </optgroup>
                         <optgroup label="Modes Homme">
                           <option value="chaussureH">Chaussure</option>
                           <option value="vetementH">Vetements</option>
                           <option value="sacH">Sacs</option>
                           <option value="accessoireH">Accessoire</option>
+                          <option value="Autre-home">Autre</option>
                         </optgroup>
                         <optgroup label="Technologies">
                           <option value="materiels">Materiels</option>

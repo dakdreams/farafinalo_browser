@@ -31,13 +31,13 @@ const Divrap = styled.div``;
 
 const panes = [
   {
-    menuItem: { key: 'farafinalo', icon: 'users', color: 'black', content: 'Farafinalo' },
+    menuItem: { key: 'farafinalo', content: 'Farafinalo' },
     render: () => (
       <Tab.Pane>
         <Image
           alt="farafinalo"
-          style={{ width: '100%', height: '16em' }}
-          src="http://www.arts-ethniques.com/images/Image/niankoye-lama-artiste-africain-peinture-africaine-19.jpg"
+          style={{ width: '100%', height: '15em' }}
+          src="https://thumbs.dreamstime.com/t/fond-avec-le-paysage-de-l-afrique-du-sud-illustration-vecteur-123563851.jpg"
         />
       </Tab.Pane>
     ),
@@ -51,33 +51,44 @@ const panes = [
             <Grid.Column>
               <h4>Maison</h4>
               <List>
-                <List.Item as="a">fauteille</List.Item>
-                <List.Item as="a">table</List.Item>
-                <List.Item as="a">table a manger</List.Item>
-                <List.Item as="a">chiase</List.Item>
-                <List.Item as="a">placar</List.Item>
-                <List.Item as="a">lit</List.Item>
-                <List.Item as="a">Pour Enfant</List.Item>
+                <List.Item>
+                  <Link to="/product/cathegory/lits">Lits</Link>
+                </List.Item>
+                <List.Item>
+                  <Link to="/product/cathegory/canapes">Canapes</Link>
+                </List.Item>
+                <List.Item>
+                  <Link to="/product/cathegory/armoires">Armoires</Link>
+                </List.Item>
+                <List.Item>
+                  <Link to="/product/cathegory/tables-manger">Tables a Manger</Link>
+                </List.Item>
+                <List.Item>
+                  <Link to="/product/cathegory/meuble-enfant">meuble enfant</Link>
+                </List.Item>
+                <List.Item>
+                  <Link to="/product/cathegory/decoration">Deco</Link>
+                </List.Item>
               </List>
             </Grid.Column>
             <Grid.Column>
               <h4>bureau</h4>
               <List>
-                <List.Item as="a">fauteille</List.Item>
-                <List.Item as="a">table</List.Item>
-                <List.Item as="a">chiese</List.Item>
-                <List.Item as="a">placar</List.Item>
-                <List.Item as="a">lit</List.Item>
+                <List.Item>
+                  <Link to="/product/cathegory/bureaux">Bureaux</Link>
+                </List.Item>
               </List>
             </Grid.Column>
             <Grid.Column>
-              <h4>decoration</h4>
+              <h4>Autre ameublement</h4>
               <List>
-                <List.Item as="a">tableau</List.Item>
-                <List.Item as="a">pot de fleur</List.Item>
+                <List.Item>
+                  <Link to="/product/cathegory/autre-ameublement">Autre</Link>
+                </List.Item>
+                {/* <List.Item as="a">pot de fleur</List.Item>
                 <List.Item as="a">instrument de nusique</List.Item>
                 <List.Item as="a">porcelaine</List.Item>
-                <List.Item as="a">autre</List.Item>
+                <List.Item as="a">autre</List.Item> */}
               </List>
             </Grid.Column>
             <Grid.Column>
@@ -97,38 +108,30 @@ const panes = [
     menuItem: { key: 'vestimentaire1', icon: 'male', color: 'violet', content: 'Mode Femme' },
     render: () => (
       <Tab.Pane>
-        {' '}
         <Grid columns={4}>
           <Grid.Row>
             <Grid.Column>
               <h4>vestimantaire</h4>
               <List>
-                <List.Item as="a">Chaussure</List.Item>
-                <List.Item as="a">table</List.Item>
-                <List.Item as="a">table a manger</List.Item>
-                <List.Item as="a">chiase</List.Item>
-                <List.Item as="a">placar</List.Item>
-                <List.Item as="a">Pour Enfant</List.Item>
+                <List.Item>
+                  <Link to="/product/cathegory/vestimantaire-femme">Vestimantaire</Link>
+                </List.Item>
               </List>
             </Grid.Column>
             <Grid.Column>
-              <h4>Chaussure et Sacs</h4>
+              <h4>Chaussure</h4>
               <List>
-                <List.Item as="a">fauteille</List.Item>
-                <List.Item as="a">table</List.Item>
-                <List.Item as="a">chiese</List.Item>
-                <List.Item as="a">placar</List.Item>
-                <List.Item as="a">lit</List.Item>
+                <List.Item>
+                  <Link to="/product/cathegory/chaussure-femme">Chaussure</Link>
+                </List.Item>
               </List>
             </Grid.Column>
             <Grid.Column>
               <h4>Accessoire</h4>
               <List>
-                <List.Item as="a">tableau</List.Item>
-                <List.Item as="a">pot de fleur</List.Item>
-                <List.Item as="a">instrument de nusique</List.Item>
-                <List.Item as="a">porcelaine</List.Item>
-                <List.Item as="a">autre</List.Item>
+                <List.Item>
+                  <Link to="/product/cathegory/accessoire-femme">Accessoire</Link>
+                </List.Item>
               </List>
             </Grid.Column>
             <Grid.Column>
@@ -148,39 +151,31 @@ const panes = [
     menuItem: { key: 'vestimentaire2', icon: 'black tie', color: 'blue', content: 'Mode Home' },
     render: () => (
       <Tab.Pane>
-        {' '}
         <Grid columns={4}>
           <Grid.Row>
             <Grid.Column>
               <h4>Vestimantaire</h4>
               <List>
-                <List.Item as="a">fauteille</List.Item>
-                <List.Item as="a">table</List.Item>
-                <List.Item as="a">table a manger</List.Item>
-                <List.Item as="a">chiase</List.Item>
-                <List.Item as="a">placar</List.Item>
-                <List.Item as="a">lit</List.Item>
+                <List.Item>
+                  <Link to="/product/cathegory/vestimantaire-homme">Vestimantaire</Link>
+                </List.Item>
                 <List.Item as="a">Pour Enfant</List.Item>
               </List>
             </Grid.Column>
             <Grid.Column>
               <h4>Chaussure</h4>
               <List>
-                <List.Item as="a">fauteille</List.Item>
-                <List.Item as="a">table</List.Item>
-                <List.Item as="a">chiese</List.Item>
-                <List.Item as="a">placar</List.Item>
-                <List.Item as="a">lit</List.Item>
+                <List.Item>
+                  <Link to="/product/cathegory/chaussure-homme">Chaussure</Link>
+                </List.Item>
               </List>
             </Grid.Column>
             <Grid.Column>
               <h4>Accessoire</h4>
               <List>
-                <List.Item as="a">tableau</List.Item>
-                <List.Item as="a">pot de fleur</List.Item>
-                <List.Item as="a">instrument de nusique</List.Item>
-                <List.Item as="a">porcelaine</List.Item>
-                <List.Item as="a">autre</List.Item>
+                <List.Item>
+                  <Link to="/product/cathegory/accessoire-homme">Accessoire</Link>
+                </List.Item>
               </List>
             </Grid.Column>
             <Grid.Column>
@@ -200,39 +195,28 @@ const panes = [
     menuItem: { key: 'techno', icon: 'factory', color: 'yellow', content: 'Technologies' },
     render: () => (
       <Tab.Pane>
-        {' '}
         <Grid columns={4}>
           <Grid.Row>
             <Grid.Column>
-              <h4>Equipement</h4>
+              <h4>Materiels</h4>
               <List>
-                <List.Item as="a">fauteille</List.Item>
-                <List.Item as="a">table</List.Item>
-                <List.Item as="a">table a manger</List.Item>
-                <List.Item as="a">chiase</List.Item>
-                <List.Item as="a">placar</List.Item>
-                <List.Item as="a">Pour Enfant</List.Item>
+                <List.Item>
+                  <Link to="/product/cathegory/materiels">Materiels</Link>
+                </List.Item>
               </List>
             </Grid.Column>
             <Grid.Column>
-              <h4>Electronique</h4>
+              <h4>Logicils</h4>
               <List>
-                <List.Item as="a">fauteille</List.Item>
-                <List.Item as="a">table</List.Item>
-                <List.Item as="a">chiese</List.Item>
-                <List.Item as="a">placar</List.Item>
-                <List.Item as="a">lit</List.Item>
+                <List.Item>
+                  <Link to="/product/cathegory/logiciel" style={{ color: 'red' }}>
+                    logiciel
+                  </Link>
+                </List.Item>
               </List>
             </Grid.Column>
             <Grid.Column>
-              <h4>Autre</h4>
-              <List>
-                <List.Item as="a">tableau</List.Item>
-                <List.Item as="a">pot de fleur</List.Item>
-                <List.Item as="a">instrument de nusique</List.Item>
-                <List.Item as="a">porcelaine</List.Item>
-                <List.Item as="a">autre</List.Item>
-              </List>
+              {''}
             </Grid.Column>
             <Grid.Column>
               <Image
@@ -249,7 +233,13 @@ const panes = [
   },
   {
     menuItem: { key: 'insolit', icon: 'in cart', color: 'teal', content: 'autre' },
-    render: () => <Tab.Pane>Autre</Tab.Pane>,
+    render: () => (
+      <Tab.Pane>
+        <Link to="/product/cathegory/autre" style={{ color: 'red' }}>
+          Autre
+        </Link>
+      </Tab.Pane>
+    ),
   },
 ];
 
@@ -301,6 +291,17 @@ class Home extends React.Component {
     const trigger3 = (
       <span>
         <img width="53" height="53" alt="mode" src={'https://res.cloudinary.com/dg6zkrdqu/image/upload/v1540757771/farafinalo-icon/mode.png'} />
+      </span>
+    );
+
+    const trigger4 = (
+      <span>
+        <img
+          width="53"
+          height="53"
+          alt="mode"
+          src={'https://res.cloudinary.com/dg6zkrdqu/image/upload/v1540757767/farafinalo-icon/supermarket.svg'}
+        />
       </span>
     );
 
@@ -514,16 +515,31 @@ class Home extends React.Component {
             <Grid.Column textAlign="center">
               <Dropdown trigger={trigger1} icon={null}>
                 <Dropdown.Menu>
-                  <Dropdown.Header icon="tags" content="Filter by tag" />
+                  <Dropdown.Header icon="tags" content="Ameublement" />
                   <Dropdown.Divider />
                   <Dropdown.Item>
-                    <Link to="/product/cathegory/lit">Lit</Link>
+                    <Link to="/product/cathegory/lits">Lits</Link>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Link to="/product/cathegory/camape">Camape</Link>
+                    <Link to="/product/cathegory/canapes">Canapes</Link>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Link to="/product/cathegory/decoration">Decoration</Link>
+                    <Link to="/product/cathegory/armoires">Armoires</Link>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <Link to="/product/cathegory/tables-manger">Tables a Manger</Link>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <Link to="/product/cathegory/bureaux">Bureaux</Link>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <Link to="/product/cathegory/decoration">Deco</Link>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <Link to="/product/cathegory/meuble-enfant">meuble enfant</Link>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <Link to="/product/cathegory/autre-ameublement">Autre</Link>
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
@@ -533,31 +549,31 @@ class Home extends React.Component {
             <Grid.Column textAlign="center">
               <Dropdown trigger={trigger3} icon={null}>
                 <Dropdown.Menu>
-                  <Dropdown.Header icon="tags" content="femme" />
+                  <Dropdown.Header icon="tags" content="Mode femme" />
                   <Dropdown.Divider />
 
-                  <Dropdown.Item>
-                    <Link to="/product/cathegory/chaussure-femme">Chaussure</Link>
-                  </Dropdown.Item>
                   <Dropdown.Item>
                     <Link to="/product/cathegory/vestimantaire-femme">Vestimantaire</Link>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Link to="/product/cathegory/sacs-femme">Sacs</Link>
+                    <Link to="/product/cathegory/chaussure-femme">Chaussure</Link>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <Link to="/product/cathegory/sacs">Sacs</Link>
                   </Dropdown.Item>
                   <Dropdown.Item>
                     <Link to="/product/cathegory/accessoire-femme">Accessoire</Link>
                   </Dropdown.Item>
 
                   <Dropdown.Divider />
-                  <Dropdown.Header icon="tags" content="homme" />
+                  <Dropdown.Header icon="tags" content="Mode homme" />
                   <Dropdown.Divider />
 
                   <Dropdown.Item>
-                    <Link to="/product/cathegory/chaussure-homme">Chaussure</Link>
+                    <Link to="/product/cathegory/vestimantaire-homme">Vestimantaire</Link>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Link to="/product/cathegory/vestimentaire">Vestimentaire</Link>
+                    <Link to="/product/cathegory/chaussure-homme">Chaussure</Link>
                   </Dropdown.Item>
                   <Dropdown.Item>
                     <Link to="/product/cathegory/accessoire-homme">Accessoire</Link>
@@ -570,7 +586,7 @@ class Home extends React.Component {
             <Grid.Column textAlign="center">
               <Dropdown trigger={trigger2} icon={null}>
                 <Dropdown.Menu>
-                  <Dropdown.Header icon="tags" content="Filter by tag" />
+                  <Dropdown.Header icon="tags" content="africa tech" />
                   <Dropdown.Divider />
                   <Dropdown.Item>
                     <Link to="/product/cathegory/materiels">Materiels</Link>
@@ -586,12 +602,17 @@ class Home extends React.Component {
               Technologies
             </Grid.Column>
             <Grid.Column textAlign="center">
-              <img
-                width="53"
-                height="53"
-                alt="supermarket"
-                src={'https://res.cloudinary.com/dg6zkrdqu/image/upload/v1540757767/farafinalo-icon/supermarket.svg'}
-              />
+              <Dropdown trigger={trigger4} icon={null}>
+                <Dropdown.Menu>
+                  <Dropdown.Header icon="tags" content="autre" />
+                  <Dropdown.Divider />
+                  <Dropdown.Item>
+                    <Link to="/product/cathegory/autre" style={{ color: 'red' }}>
+                      Autre
+                    </Link>
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
               <br />
               Autre
             </Grid.Column>
