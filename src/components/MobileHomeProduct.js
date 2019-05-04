@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image, Grid, Icon } from 'semantic-ui-react';
+import { Card, Image, Grid, Icon, Flag } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 class MobileHomeProduct extends React.Component {
@@ -41,7 +41,7 @@ class MobileHomeProduct extends React.Component {
                   </Grid.Column>
 
                   <Grid.Column floated="right" width={2}>
-                    <Icon name="users" />
+                    <Flag name="ci" />
                   </Grid.Column>
                 </div>
               )}

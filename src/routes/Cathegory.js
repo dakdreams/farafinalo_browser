@@ -30,19 +30,25 @@ class Cathegory extends Component {
     const cathegory = this.props.match.params.cat;
     const myCat = [
       'meuble',
-      'vestimentaire',
-      'lit',
-      'camape',
+      'lits',
+      'canapes',
+      'tables-manger',
+      'bureaux',
       'decoration',
+      'armoires',
+      'meuble-enfant',
+      'autre-ameublement',
+      'vestimentaire',
       'chaussure-femme',
       'vestimantaire-femme',
-      'sacs-femme',
+      'sacs',
       'accessoire-femme',
       'chaussure-homme',
       'vestimantaire-homme',
       'accessoire-homme',
       'materiels',
       'logiciel',
+      'autre',
     ];
 
     if (!myCat.includes(cathegory)) {
@@ -54,14 +60,25 @@ class Cathegory extends Component {
         {({ loading, error, data }) => {
           if (loading) {
             return (
-              <Dimmer active inverted>
-                <Loader size="medium">Loading</Loader>
-              </Dimmer>
+              <Grid style={{ marginTop: '10em' }}>
+                <Dimmer active inverted>
+                  <Loader size="medium">Loading</Loader>
+                </Dimmer>
+              </Grid>
             );
           }
           if (error) return `Error! ${error.message}`;
 
           const { products } = data.cathegoryAllProduct;
+          if (products) {
+            return (
+              <Grid style={{ marginTop: '8em' }}>
+                <Header as="h3" size='huge' inverted color="red" icon textAlign='center' block>
+                  !!!desoles pas de <a style={{ fontSize: 'large', fontFamily: 'cursive', color: 'white' }}>{cathegory}</a> pour le moment!!!
+                </Header>
+              </Grid>
+            );
+          }
           return (
             <div style={{ marginTop: '5em' }}>
               <Grid.Column>
@@ -101,6 +118,15 @@ class Cathegory extends Component {
           if (error) return `Error! ${error.message}`;
 
           const { products } = data.cathegoryAllProduct;
+          if (products) {
+            return (
+              <Grid>
+                <Header as="h3" inverted color="red" block>
+                  !!desoles pas de <a style={{ fontSize: '25px', fontFamily: 'cursive', color: 'white' }}>{cathegory}</a> pour le moment!!!
+                </Header>
+              </Grid>
+            );
+          }
           return (
             <Grid>
               <Header as="h3" size="huge" style={{ backgroundColor: '#f8453e', color: 'white' }} block="true">
