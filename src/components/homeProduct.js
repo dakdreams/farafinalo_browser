@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Image, Grid, Flag, Responsive, Label } from 'semantic-ui-react';
+import NumberFormat from 'react-number-format';
 
 class HomeProduct extends React.Component {
   constructor(props) {
@@ -25,12 +26,13 @@ class HomeProduct extends React.Component {
           </div>
         </Responsive>
         <Responsive {...Responsive.onlyComputer}>
-          <Card link key={this.state.prodid}>
+          <Card raised link key={this.state.prodid}>
             <Image style={{ height: '206.453px' }} src={this.state.url} />
             <Card.Content extra>
               <Grid>
                 <Grid.Column floated="left" width={12}>
-                  <h3>{this.state.price} Fcfa</h3>
+                  <NumberFormat value={this.state.price} displayType={'text'} thousandSeparator=" " suffix={' Fcfa'} />
+                  {/* <h3>{this.state.price} Fcfa</h3> */}
                 </Grid.Column>
                 <Grid.Column floated="right" width={4}>
                   <Flag name="ci" />
