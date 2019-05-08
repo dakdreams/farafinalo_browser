@@ -96,7 +96,7 @@ class Cathegory extends Component {
             this.setState({ activePage, limito: 2, offsetCount: offsetCount2 });
             refetch();
           };
-          if (products) {
+          if (!productCount) {
             return (
               <Grid style={{ marginTop: '8em' }}>
                 <Header as="h3" size="huge" inverted color="red" icon textAlign="center" block>
@@ -182,20 +182,18 @@ class Cathegory extends Component {
             await this.setState({ activePage, limito: 2, offsetCount: offsetCount2 });
             refetch();
           };
-          if (products) {
+          if (!productCount) {
             return (
-              <Grid>
-                <Header as="h3" inverted color="red" block>
-                  !!desoles pas de <a style={{ fontSize: '25px', fontFamily: 'cursive', color: 'white' }}>{cathegory}</a> pour le moment!!!
-                </Header>
-              </Grid>
+              <Header style={{ marginTop: '50px' }} as="h3" inverted color="red" block>
+                !!desoles pas de <a style={{ fontSize: '25px', fontFamily: 'cursive', color: 'white' }}>{cathegory}</a> pour le moment!!!
+              </Header>
             );
           }
           return (
             <Grid>
-              <Header as="h3" size="huge" style={{ backgroundColor: '#f8453e', color: 'white' }} block="true">
+              {/* <Header as="h3" size="huge" style={{ backgroundColor: '#f8453e', color: 'white' }} block>
                 Selection {cathegory}
-              </Header>
+              </Header> */}
 
               <Grid divided="vertically">
                 <Grid.Row columns={2}>

@@ -825,13 +825,13 @@ class product extends React.Component {
                         />
                       </Grid.Column>
                     </Grid.Row>
-                    <Responsive {...Responsive.onlyTablet}>
-                      <Grid.Row>
-                        <ComputerProduct />
-                      </Grid.Row>
-                    </Responsive>
                   </Grid>
                 </div>
+                <Responsive {...Responsive.onlyTablet}>
+                  <Grid.Row>
+                    <ComputerProduct />
+                  </Grid.Row>
+                </Responsive>
               </Grid.Column>
               <Grid.Column floated="right" computer={3}>
                 <Responsive {...Responsive.onlyComputer}>

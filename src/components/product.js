@@ -114,6 +114,7 @@ class CardExampleCard extends React.Component {
                 <Grid>
                   <Grid.Column floated="left" width={8}>
                     <NumberFormat
+                      style={{ fontWeight: 900 }}
                       value={this.state.price}
                       displayType={'text'}
                       thousandSeparator=" "

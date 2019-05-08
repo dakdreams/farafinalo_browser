@@ -21,7 +21,7 @@ class MobileHomeProduct extends React.Component {
       <Link to={`/product/${this.state.prodid}`}>
         <Card raised key={this.state.prodid} href={'#'}>
           <Image style={{ height: '150.453px' }} src={this.state.url} />
-          <Card.Content extra>
+          <Card.Content style={{ fontWeight: 1000, borderWidth: 0 }} extra>
             <Grid.Row>
               {this.state.owner ? (
                 <div>

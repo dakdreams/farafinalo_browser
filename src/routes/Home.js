@@ -318,11 +318,11 @@ class Home extends React.Component {
                       <Image
                         alt="farafinalo"
                         style={{ width: '20em', height: '15em' }}
-                        src="https://images.emojiterra.com/google/android-pie/512px/1f926-1f3ff-2642.png"
+                        src="/baby.png"
                       />
                     </Grid.Row>
                     <Grid.Row centered>
-                      <div> OOp! desole verifier votre connection internet</div>
+                      <div> OOps! desole verifier votre connection internet</div>
                     </Grid.Row>
                   </Grid>
                 </Responsive>
@@ -332,11 +332,11 @@ class Home extends React.Component {
                       <Image
                         alt="farafinalo"
                         style={{ width: '80%', height: '80%' }}
-                        src="https://cdn0.iconfinder.com/data/icons/emojis-flat-pixel-perfect-w-skin-tone-2/64/c3_emoji-emoticon-face-cry-sad-scream-512.png"
+                        src="/baby.png"
                       />
                     </Grid.Row>
                     <Grid.Row centered>
-                      <div> OOp! desole verifier votre connection internet</div>
+                      <div> OOps! desole verifier votre connection internet</div>
                     </Grid.Row>
                   </Grid>
                 </Responsive>
@@ -368,7 +368,7 @@ class Home extends React.Component {
                   </Label> */}
                 </Grid>
               </Responsive>
-              <Responsive {...Responsive.onlyComputer}>
+              <Responsive minWidth={768}>
                 <Grid divided="vertically">
                   <Grid.Row columns={4}>
                     {data.allProduct.products.map(prod => (
@@ -420,24 +420,24 @@ class Home extends React.Component {
               <Slider {...settings} style={{ backgroundColor: '#eeeeee' }}>
                 <div>
                   <img
-                    width="320"
-                    height="250"
+                    width="300"
+                    height="200"
                     alt="toto"
                     src={'https://cdn.shopify.com/s/files/1/1510/7986/files/slider_espace_meuble_1920x.jpg?vu003d1515531332'}
                   />
                 </div>
                 <div>
                   <img
-                    width="320"
-                    height="250"
+                    width="300"
+                    height="200"
                     alt="titi"
                     src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw54GuRmB3WXWk3VoUWnnpI5YWTX01atDQn9CqS4tr4fEROcz2jA'}
                   />
                 </div>
                 <div>
                   <img
-                    width="320"
-                    height="250"
+                    width="300"
+                    height="200"
                     alt="toto"
                     src={
                       'https://img-3.journaldesfemmes.com/_oa4sFK7VEqZygXyZLYJ2JqqWMg=/910x607/smart/e5c4b48f69654b829712a222a8762b86/ccmcms-jdf/10442563-renover-et-relooker-un-meuble-en-bois-sans-se-tromper.jpg'
@@ -446,14 +446,14 @@ class Home extends React.Component {
                 </div>
                 <div>
                   <img
-                    width="320"
-                    height="250"
+                    width="300"
+                    height="200"
                     alt="kirokou"
                     src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSng4nxD06UqL8MHSlM7Sv263W4VAx7B3OlnX4icpB9STSGjx40xw'}
                   />
                 </div>
                 <div>
-                  <img width="320" height="250" alt="" src={'https://cdnm.westwing.com/glossary/uploads/fr/2015/06/chaise-africaine.jpg'} />
+                  <img width="300" height="200" alt="" src={'https://cdnm.westwing.com/glossary/uploads/fr/2015/06/chaise-africaine.jpg'} />
                 </div>
               </Slider>
             </Grid.Column>

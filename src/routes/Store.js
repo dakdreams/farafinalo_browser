@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Tab, Responsive, Segment, Image, Card, Rating, Button, Label, Container, Header, Modal, Icon, Loader } from 'semantic-ui-react';
+import { Grid, Tab, Responsive, Segment, Image, Card, Rating, Button, Label, Container, Header, Modal, Icon, Loader, Flag } from 'semantic-ui-react';
 import { graphql, Query, compose } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -395,12 +395,15 @@ class Store extends React.Component {
                   <Card style={{ width: '100%' }}>
                     <Card.Content>
                       {avatar ? (
-                        <Image floated="right" size="mini" src={`${avatar}`} />
+                        <Image floated="right" size="tiny" src={`${avatar}`} />
                       ) : (
-                        <Image floated="right" size="mini" src="https://www.goafricaonline.com/images/drapeaux/afrique.png" />
+                        <Image floated="right" size="tiny" src="https://www.goafricaonline.com/images/drapeaux/afrique.png" />
                       )}
 
-                      <Card.Header>{business}</Card.Header>
+                      <Card.Header>
+                        <Flag name="ci" />
+                        {`  ${business}`}
+                      </Card.Header>
                       <Card.Meta>{`${secondname} ${firstname}`}</Card.Meta>
                       <Card.Description>{about}</Card.Description>
                     </Card.Content>
@@ -472,7 +475,10 @@ class Store extends React.Component {
                         <Image floated="right" size="tiny" src="https://www.goafricaonline.com/images/drapeaux/afrique.png" />
                       )}
 
-                      <Card.Header>{business}</Card.Header>
+                      <Card.Header>
+                        <Flag name="ci" />
+                        {`  ${business}`}
+                      </Card.Header>
                       <Card.Meta>{`${secondname} ${firstname}`}</Card.Meta>
                       <Card.Description>{about}</Card.Description>
                     </Card.Content>

@@ -64,7 +64,7 @@ class HomeLogin extends React.Component {
             <div>
               <Button.Group>
                 <Link to="/register">
-                  <Button color="orange">Inscription</Button>
+                  <Button>Inscription</Button>
                 </Link>
                 <Button.Or text="ou" />
                 <Link to="/login">

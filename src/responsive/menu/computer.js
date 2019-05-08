@@ -55,17 +55,17 @@ class MenuExampleAttached extends React.Component {
     const Login = () => (
       <Button.Group>
         <Link to="/register">
-          <Button positive>inscription</Button>
+          <Button color='grey'>inscription</Button>
         </Link>
         <Button.Or text="ou" />
         <Link to="/login">
-          <Button>connection</Button>
+          <Button positive>connection</Button>
         </Link>
       </Button.Group>
     );
 
     const Drop = () => (
-      <Dropdown button text="Farafinalo" style={{ backgroundColor: '#F7DD05' }} simple>
+      <Dropdown button text="Farafinalo" style={{ backgroundColor: '#808080', color: '#FFFFFF' }} simple>
         <Dropdown.Menu>
           <Dropdown.Item>
             <Icon name="dropdown" />
@@ -80,7 +80,7 @@ class MenuExampleAttached extends React.Component {
             <Link to="/">Accueille</Link>
           </Dropdown.Item>
           <Dropdown.Item>
-            <Link to="/allstore">Magasin</Link>
+            <Link to="/allstore">Store</Link>
           </Dropdown.Item>
           <Dropdown.Item>
             {firstname ? (
@@ -98,7 +98,7 @@ class MenuExampleAttached extends React.Component {
                 </Modal.Actions>
               </Modal>
             ) : (
-              <Link to="/login">Cree votre magasin</Link>
+              <Link to="/login">Cree votre store</Link>
             )}
           </Dropdown.Item>
           <Dropdown.Item>{firstname ? <Link to="/profil">Profil</Link> : <Link to="/login">profil</Link>}</Dropdown.Item>

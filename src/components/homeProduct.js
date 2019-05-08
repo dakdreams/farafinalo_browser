@@ -18,17 +18,18 @@ class HomeProduct extends React.Component {
     return (
       <a href={`/product/${this.state.name}/${this.state.prodid}`}>
         <Responsive {...Responsive.onlyTablet}>
-          <div>
-            <Label size="mini" style={{ position: 'absolute', zIndex: 1, top: '1%', left: '51%' }} as="a" color="red" tag>
-              {this.state.price} Fcfa
+          <Card raised link key={this.state.prodid}>
+            <Label size="mini" style={{ position: 'absolute', zIndex: 1, top: '1%', left: '51%', fontWeight: '900px' }} as="a" tag>
+              <NumberFormat value={this.state.price} displayType={'text'} thousandSeparator=" " suffix={' Fcfa'} />
             </Label>
-            <Image style={{ height: 170 }} fluid src={this.state.url} />
-          </div>
+            <Flag name="ci" style={{ position: 'absolute', zIndex: 1, top: '1%', left: '1%' }} />
+            <Image style={{ height: '180px' }} fluid src={this.state.url} />
+          </Card>
         </Responsive>
         <Responsive {...Responsive.onlyComputer}>
           <Card raised link key={this.state.prodid}>
             <Image style={{ height: '206.453px' }} src={this.state.url} />
-            <Card.Content extra>
+            <Card.Content style={{ fontWeight: 1000 }} extra>
               <Grid>
                 <Grid.Column floated="left" width={12}>
                   <NumberFormat value={this.state.price} displayType={'text'} thousandSeparator=" " suffix={' Fcfa'} />
