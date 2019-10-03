@@ -127,6 +127,7 @@ class Store extends React.Component {
                           imagelink={prod.prodimages[0]}
                           prodPrice={prod.prodprice}
                           prodId={prod.id}
+                          prodcath={prod.prodcathegory}
                           noOwner
                         />
                       </Grid.Column>
@@ -148,6 +149,7 @@ class Store extends React.Component {
                           imagelink={prod.prodimages[0]}
                           prodPrice={prod.prodprice}
                           prodId={prod.id}
+                          prodcath={prod.prodcathegory}
                           noOwner
                         />
                       </Grid.Column>
@@ -168,6 +170,7 @@ class Store extends React.Component {
                           imagelink={prod.prodimages[0]}
                           prodPrice={prod.prodprice}
                           prodId={prod.id}
+                          prodcath={prod.prodcathegory}
                           noOwner
                         />
                       </Grid.Column>

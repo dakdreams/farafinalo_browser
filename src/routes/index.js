@@ -51,11 +51,12 @@ export default () => (
       <Route path="/login" exact component={Login} />
       <PrivateRoute path="/profil" exact component={Profil} />
       <PrivateRoute path="/addproduct" exact component={Addprod} />
+      <Route path="/allstore" exact component={AllStore} />  
       <Route path="/product/cathegory/:cat" exact component={Cathegory} /> 
-      <Route path="/product/:name/:id" exact component={Product} /> 
+      <Route path="/product/:cathegory/:name/:id" exact component={Product} /> 
       <Route path="/product/:id" exact component={Product} /> 
-      <Route path="/store/:id" exact component={Store} />
-      <Route path="/allstore" exact component={AllStore} />                                                     
+      <Route path="/store/:owner/:id" exact component={Store} />
+                                                   
     </Switch>
   </BrowserRouter>
 );

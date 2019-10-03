@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image, Icon, Responsive, Segment } from 'semantic-ui-react';
+import { Card, Image, Responsive, Segment } from 'semantic-ui-react';
 
 class StoreView extends React.Component {
   constructor(props) {
@@ -16,8 +16,12 @@ class StoreView extends React.Component {
   }
 
   render() {
+    // pour ameliore le referencement
+    const store = this.state.storeName.trim();
+    const StoreName = store.replace(/ /g, '-');
+
     const MobileView = () => (
-      <a href={`/store/${this.state.storeId}`}>
+      <a href={`/store/${StoreName}/${this.state.storeId}`}>
         <Card link key={this.state.storeId}>
           <Image
             style={{ height: '6em' }}
@@ -38,38 +42,45 @@ class StoreView extends React.Component {
             circular
             size="medium"
             src={
-              this.state.storeAvatar ? `${this.state.storeAvatar}` : '/afriqua.png'
+              this.state.storeAvatar
+                ? `${this.state.storeAvatar}`
+                : '/afriqua.png'
             }
           />
           <Card.Content style={{ backgroundColor: '#fcfcfc' }}>
-            <Card.Header textAlign="center" style={{ marginTop: 10, fontSize: 'smaller' }}>
+            <Card.Header
+              textAlign="center"
+              style={{ marginTop: 10, fontSize: 'smaller' }}
+            >
               {this.state.storeName}
             </Card.Header>
             <Card.Meta>
-              <span style={{ fontSize: 'smaller' }}>{`${this.state.storeFirstName} ${this.state.storeSecondName}`}</span>
+              <span
+                style={{ fontSize: 'smaller' }}
+              >{`${this.state.storeFirstName} ${this.state.storeSecondName}`}</span>
             </Card.Meta>
             {/* <Card.Description style={{ fontSize: 'smaller' }} >{this.state.storeAbout.substr(0, 37)}...</Card.Description> */}
           </Card.Content>
-          <Card.Content extra style={{ backgroundColor: '#fcfcfc' }}>
+          {/* <Card.Content extra style={{ backgroundColor: '#fcfcfc' }}>
             <a style={{ fontSize: 12 }}>
               <Icon name="user" />
               22 Friends
             </a>
-            {/* <Grid style={{ marginTop: 20 }} >
+            <Grid style={{ marginTop: 20 }} >
             <Grid.Column floated="left" width={8}>
               <h3>{this.state.storeName} Fcfa</h3>
             </Grid.Column>
             <Grid.Column floated="right" width={8}>
               <Rating icon="star" defaultRating={3} maxRating={5} />
             </Grid.Column>
-          </Grid> */}
-          </Card.Content>
+          </Grid>
+          </Card.Content> */}
         </Card>
       </a>
     );
 
     const ComputerView = () => (
-      <a href={`/store/${this.state.storeId}`}>
+      <a href={`/store/${StoreName}/${this.state.storeId}`}>
         <Card link key={this.state.storeId}>
           <Image
             style={{ height: '180.453px' }}
@@ -90,7 +101,9 @@ class StoreView extends React.Component {
             circular
             size="medium"
             src={
-              this.state.storeAvatar ? `${this.state.storeAvatar}` : '/afriqua.png'
+              this.state.storeAvatar
+                ? `${this.state.storeAvatar}`
+                : '/afriqua.png'
             }
           />
           <Card.Content style={{ backgroundColor: '#fcfcfc' }}>
@@ -100,28 +113,22 @@ class StoreView extends React.Component {
             <Card.Meta>
               <span>{`${this.state.storeFirstName} ${this.state.storeSecondName}`}</span>
             </Card.Meta>
-            <Card.Description>{this.state.storeAbout.substr(0, 80)}...</Card.Description>
+            <Card.Description>
+              {this.state.storeAbout.substr(0, 80)}...
+            </Card.Description>
           </Card.Content>
-          <Card.Content extra style={{ backgroundColor: '#fcfcfc' }}>
+          {/* <Card.Content extra style={{ backgroundColor: '#fcfcfc' }}>
             <a>
               <Icon name="user" />
               22 Friends
             </a>
-            {/* <Grid style={{ marginTop: 20 }} >
-            <Grid.Column floated="left" width={8}>
-              <h3>{this.state.storeName} Fcfa</h3>
-            </Grid.Column>
-            <Grid.Column floated="right" width={8}>
-              <Rating icon="star" defaultRating={3} maxRating={5} />
-            </Grid.Column>
-          </Grid> */}
-          </Card.Content>
+          </Card.Content> */}
         </Card>
       </a>
     );
 
     const TabletView = () => (
-      <a href={`/store/${this.state.storeId}`}>
+      <a href={`/store/${StoreName}/${this.state.storeId}`}>
         <Card link key={this.state.storeId}>
           <Image
             style={{ height: '140px' }}
@@ -142,7 +149,9 @@ class StoreView extends React.Component {
             circular
             size="medium"
             src={
-              this.state.storeAvatar ? `${this.state.storeAvatar}` : '/afriqua.png'
+              this.state.storeAvatar
+                ? `${this.state.storeAvatar}`
+                : '/afriqua.png'
             }
           />
           <Card.Content style={{ backgroundColor: '#fcfcfc' }}>
@@ -152,22 +161,17 @@ class StoreView extends React.Component {
             <Card.Meta>
               <span>{`${this.state.storeFirstName} ${this.state.storeSecondName}`}</span>
             </Card.Meta>
-            <Card.Description>{this.state.storeAbout.substr(0, 40)}...</Card.Description>
+            <Card.Description>
+              {this.state.storeAbout.substr(0, 40)}...
+            </Card.Description>
           </Card.Content>
-          <Card.Content extra style={{ backgroundColor: '#fcfcfc' }}>
+          {/* <Card.Content extra style={{ backgroundColor: '#fcfcfc' }}>
             <a>
               <Icon name="user" />
               22 Friends
             </a>
-            {/* <Grid style={{ marginTop: 20 }} >
-            <Grid.Column floated="left" width={8}>
-              <h3>{this.state.storeName} Fcfa</h3>
-            </Grid.Column>
-            <Grid.Column floated="right" width={8}>
-              <Rating icon="star" defaultRating={3} maxRating={5} />
-            </Grid.Column>
-          </Grid> */}
-          </Card.Content>
+
+          </Card.Content> */}
         </Card>
       </a>
     );

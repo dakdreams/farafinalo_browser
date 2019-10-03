@@ -13,12 +13,19 @@ class MobileHomeProduct extends React.Component {
       description: props.proDescription,
       price: props.prodPrice,
       owner: props.owner,
+      cath: props.prodcath,
     };
   }
 
   render() {
+    const produitName = this.state.name.trim();
+    const ProduitName = produitName.replace(/ /g, '-');
+
+    const produitCath = this.state.cath.trim();
+    const ProduitCath = produitCath.replace(/ /g, '-');
+
     return (
-      <Link to={`/product/${this.state.prodid}`}>
+      <Link to={`/product/${ProduitCath}/${ProduitName}/${this.state.prodid}`}>
         <Card raised key={this.state.prodid} href={'#'}>
           <Image style={{ height: '150.453px' }} src={this.state.url} />
           <Card.Content style={{ fontWeight: 1000, borderWidth: 0 }} extra>

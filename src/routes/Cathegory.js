@@ -49,7 +49,7 @@ class Cathegory extends Component {
     const myCat = [
       'meuble',
       'lits',
-      'canapes',
+      'canape',
       'tables-manger',
       'bureaux',
       'decoration',
@@ -67,6 +67,7 @@ class Cathegory extends Component {
       'materiels',
       'logiciel',
       'autre',
+      'livres',
     ];
 
     if (!myCat.includes(cathegory)) {

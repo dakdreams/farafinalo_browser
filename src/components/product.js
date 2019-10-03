@@ -13,15 +13,23 @@ class CardExampleCard extends React.Component {
       description: props.proDescription,
       price: props.prodPrice,
       noOwner: props.noOwner,
+      cath: props.prodcath,
     };
   }
 
   render() {
     const text = this.state.description.substring(0, 72);
+    const produitName = this.state.name.trim();
+    const ProduitName = produitName.replace(/ /g, '-');
+
+    const produitCath = this.state.cath.trim();
+    const ProduitCath = produitCath.replace(/ /g, '-');
     return (
       <div>
         <Responsive {...Responsive.onlyMobile}>
-          <Link to={`/product/${this.state.prodid}`}>
+          <Link
+            to={`/product/${ProduitCath}/${ProduitName}/${this.state.prodid}`}
+          >
             <Card raised key={this.state.prodid} href={'#'}>
               <Image style={{ height: '150.453px' }} src={this.state.url} />
               <Card.Content extra>
@@ -69,7 +77,10 @@ class CardExampleCard extends React.Component {
           </Link>
         </Responsive>
         <Responsive {...Responsive.onlyTablet}>
-          <Link key={this.state.prodid} to={`/product/${this.state.name}/${this.state.prodid}`}>
+          <Link
+            key={this.state.prodid}
+            to={`/product/${ProduitCath}/${ProduitName}/${this.state.prodid}`}
+          >
             <Card link key={this.state.prodid}>
               <Image style={{ height: '180.453px' }} src={this.state.url} />
               <Card.Content>
@@ -82,7 +93,13 @@ class CardExampleCard extends React.Component {
               <Card.Content extra>
                 <Grid>
                   <Grid.Column floated="left" width={8}>
-                    <NumberFormat style={{ fontWeight: 900 }} value={this.state.price} displayType={'text'} thousandSeparator=" " suffix={' Fcfa'} />
+                    <NumberFormat
+                      style={{ fontWeight: 900 }}
+                      value={this.state.price}
+                      displayType={'text'}
+                      thousandSeparator=" "
+                      suffix={' Fcfa'}
+                    />
                   </Grid.Column>
                   <Grid.Column floated="right" width={8}>
                     {this.state.noOwner ? (
@@ -100,7 +117,10 @@ class CardExampleCard extends React.Component {
           </Link>
         </Responsive>
         <Responsive {...Responsive.onlyComputer}>
-          <Link key={this.state.prodid} to={`/product/${this.state.name}/${this.state.prodid}`}>
+          <Link
+            key={this.state.prodid}
+            to={`/product/${ProduitCath}/${ProduitName}/${this.state.prodid}`}
+          >
             <Card link key={this.state.prodid}>
               <Image style={{ height: '205.453px' }} src={this.state.url} />
               <Card.Content>

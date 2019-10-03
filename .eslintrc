@@ -5,6 +5,7 @@
     "plugins": ["react", "jsx-a11y", "import"
     ],
     "rules": {
-        "no-mixed-operators": "off"
+        "no-mixed-operators": "off",
+        "Strings must use singlequote": "off"
     }
 }

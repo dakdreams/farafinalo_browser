@@ -11,12 +11,19 @@ class HomeProduct extends React.Component {
       name: props.prodName,
       description: props.proDescription,
       price: props.prodPrice,
+      cath: props.prodcath,
     };
   }
 
   render() {
+    // pour ameliore le referencement
+    const produitName = this.state.name.trim();
+    const ProduitName = produitName.replace(/ /g, '-');
+
+    const produitCath = this.state.cath.trim();
+    const ProduitCath = produitCath.replace(/ /g, '-');
     return (
-      <a href={`/product/${this.state.name}/${this.state.prodid}`}>
+      <a href={`/product/${ProduitCath}/${ProduitName}/${this.state.prodid}`}>
         <Responsive {...Responsive.onlyTablet}>
           <Card raised link key={this.state.prodid}>
             <Label size="mini" style={{ position: 'absolute', zIndex: 1, top: '1%', left: '51%', fontWeight: '900px' }} as="a" tag>

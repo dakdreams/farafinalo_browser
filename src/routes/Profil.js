@@ -232,6 +232,7 @@ class Profil extends React.Component {
                                 imagelink={prod.prodimages[0]}
                                 prodPrice={prod.prodprice}
                                 prodId={prod.id}
+                                prodcath={prod.prodcathegory}
                               />
                             </Grid.Column>
                           ))}

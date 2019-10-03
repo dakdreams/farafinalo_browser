@@ -47,7 +47,11 @@ const SampleNextArrow = props => {
   const { className, style, onClick } = props;
   return (
     // eslint-disable-next-line
-    <div className={className} style={{ ...style, display: 'block', background: '#c6b6b6' }} onClick={onClick} />
+    <div
+      className={className}
+      style={{ ...style, display: 'block', background: '#c6b6b6' }}
+      onClick={onClick}
+    />
   );
 };
 
@@ -55,7 +59,11 @@ const SamplePrevArrow = props => {
   const { className, style, onClick } = props;
   return (
     // eslint-disable-next-line
-    <div className={className} style={{ ...style, display: 'block', background: '#c6b6b6' }} onClick={onClick} />
+    <div
+      className={className}
+      style={{ ...style, display: 'block', background: '#c6b6b6' }}
+      onClick={onClick}
+    />
   );
 };
 
@@ -119,7 +127,17 @@ class product extends React.Component {
     if (!result) {
       this.props.history.push('/');
     } else {
-      const { prodcathegory, prodescription, prodimages, prodname, prodprice, prodstock, owner, prodgaranties, prodtransport } = result;
+      const {
+        prodcathegory,
+        prodescription,
+        prodimages,
+        prodname,
+        prodprice,
+        prodstock,
+        owner,
+        prodgaranties,
+        prodtransport,
+      } = result;
       await this.setState({
         prodcathegory,
         prodescription,
@@ -135,7 +153,8 @@ class product extends React.Component {
       const response1 = await this.props.getOwnerInfoQuery({
         variables: { id: owner },
       });
-      const { profil, business, about, tell, tell2, avatar } = await response1.data.ownerInfo.user;
+      const { profil, business, about, tell, tell2, avatar } = await response1
+        .data.ownerInfo.user;
       await this.setState({
         profil,
         business,
@@ -232,7 +251,7 @@ class product extends React.Component {
           if (error) return `Error!: ${error}`;
           const getLikesData = data.getLikes.LikeProducts;
           const likes = getLikesData.length;
-          if (likes === 0) return 'note le produit';
+          if (likes === 0) return '';
           return likes;
         }}
       </Query>
@@ -302,6 +321,7 @@ class product extends React.Component {
                             proDescription={prod.prodescription}
                             imagelink={prod.prodimages[0]}
                             prodPrice={prod.prodprice}
+                            prodcath={prodcathegory}
                             prodId={prod.id}
                           />
                         </Grid.Row>
@@ -323,6 +343,7 @@ class product extends React.Component {
                           proDescription={prod.prodescription}
                           imagelink={prod.prodimages[0]}
                           prodPrice={prod.prodprice}
+                          prodcath={prodcathegory}
                           prodId={prod.id}
                         />
                       </Grid.Column>
@@ -335,7 +356,9 @@ class product extends React.Component {
         }}
       </Query>
     );
-
+    // pour ameliore le referencement
+    const businessName = this.state.business.trim();
+    const BusinessName = businessName.replace(/ /g, '-');
     return (
       <Segment.Group>
         <Responsive {...Responsive.onlyMobile}>
@@ -347,11 +370,19 @@ class product extends React.Component {
                   <Lightbox
                     mainSrc={prodimages[photoIndex]}
                     nextSrc={prodimages[(photoIndex + 1) % prodimages.length]}
-                    prevSrc={prodimages[(photoIndex + prodimages.length - 1) % prodimages.length]}
-                    onCloseRequest={() => this.setState({ isOpen: false, autoplay: true })}
+                    prevSrc={
+                      prodimages[
+                        (photoIndex + prodimages.length - 1) % prodimages.length
+                      ]
+                    }
+                    onCloseRequest={() =>
+                      this.setState({ isOpen: false, autoplay: true })
+                    }
                     onMovePrevRequest={() =>
                       this.setState({
-                        photoIndex: (photoIndex + prodimages.length - 1) % prodimages.length,
+                        photoIndex:
+                          (photoIndex + prodimages.length - 1) %
+                          prodimages.length,
                       })
                     }
                     onMoveNextRequest={() =>
@@ -367,7 +398,15 @@ class product extends React.Component {
                     <Slider {...settings2}>
                       {prodimages.map(url => (
                         <div key={uuidv4()}>
-                          <img src={url} width="190" height="190" onClick={() => this.setState({ isOpen: true, autoplay: false })} alt="" />
+                          <img
+                            src={url}
+                            width="190"
+                            height="190"
+                            onClick={() =>
+                              this.setState({ isOpen: true, autoplay: false })
+                            }
+                            alt=""
+                          />
                         </div>
                       ))}
                     </Slider>
@@ -380,32 +419,61 @@ class product extends React.Component {
                   </Grid.Column>
                 </Grid.Row>
 
-                <Grid.Column style={{ padding: 0, color: 'red', fontSize: 16 }} textAlign="center" width={15}>
-                  <NumberFormat value={prodprice} displayType={'text'} thousandSeparator=" " suffix={' Fcfa'} />
+                <Grid.Column
+                  style={{ padding: 0, color: 'red', fontSize: 16 }}
+                  textAlign="center"
+                  width={15}
+                >
+                  <NumberFormat
+                    value={prodprice}
+                    displayType={'text'}
+                    thousandSeparator=" "
+                    suffix={' Fcfa'}
+                  />
                 </Grid.Column>
 
                 <Grid.Row columns={2}>
                   <Grid.Column width={3}>
-                    <img src={'http://www.myownbali.com/wp-content/uploads/store-icon.png'} width="30" height="30" alt="" />
+                    <img
+                      src={
+                        'http://www.myownbali.com/wp-content/uploads/store-icon.png'
+                      }
+                      width="30"
+                      height="30"
+                      alt=""
+                    />
                   </Grid.Column>
                   <Grid.Column width={6} textAlign="center">
-                    <Link to={`/store/${owner}`}>
+                    <Link to={`/store/${BusinessName}/${owner}`}>
                       <h3 style={{ fontSize: 14 }}>{business}</h3>
                     </Link>
                   </Grid.Column>
                   <Grid.Column width={7}>
                     <div>
-                      <Modal trigger={<Button size="tiny">Mes Contacts</Button>} basic size="small" closeIcon>
-                        <Header icon="call square" content="Appeler pour plus d info" />
+                      <Modal
+                        trigger={<Button size="tiny">Mes Contacts</Button>}
+                        basic
+                        size="small"
+                        closeIcon
+                      >
+                        <Header
+                          icon="call square"
+                          content="Appeler pour plus d info"
+                        />
                         <Modal.Content>
                           <p style={{ fontSize: 20 }}>
-                            <NumberFormat value={tell2} displayType={'text'} format="## ## ## ##" />
+                            <NumberFormat
+                              value={tell2}
+                              displayType={'text'}
+                              format="## ## ## ##"
+                            />
                             {/* <a style={{ fontSize: 20 }}>{tell2}</a> */}
                           </p>
                         </Modal.Content>
                         <Modal.Actions>
                           <Button color="green" inverted>
-                            <Icon name="call" /> <a href={`tel: +225${tell2}`}> Appeler</a>
+                            <Icon name="call" />{' '}
+                            <a href={`tel: +225${tell2}`}> Appeler</a>
                           </Button>
                         </Modal.Actions>
                       </Modal>
@@ -437,38 +505,76 @@ class product extends React.Component {
                       render: () => (
                         <Tab.Pane attached={false}>
                           <Grid.Row>
-                            <Header style={{ fontSize: 'smaller' }} color="orange" as="h5">
+                            <Header
+                              style={{ fontSize: 'smaller' }}
+                              color="orange"
+                              as="h5"
+                            >
                               Nom du produit
                             </Header>
-                            <Segment style={{ fontSize: 'smaller' }} color="black" raised>
+                            <Segment
+                              style={{ fontSize: 'smaller' }}
+                              color="black"
+                              raised
+                            >
                               {prodname}
                             </Segment>
                           </Grid.Row>
                           <Grid.Row style={{ marginTop: 10 }}>
-                            <Header style={{ fontSize: 'smaller' }} color="orange" as="h5">
+                            <Header
+                              style={{ fontSize: 'smaller' }}
+                              color="orange"
+                              as="h5"
+                            >
                               Description
                             </Header>
-                            <Segment style={{ fontSize: 'smaller' }} color="green" raised>
+                            <Segment
+                              style={{ fontSize: 'smaller' }}
+                              color="green"
+                              raised
+                            >
                               {prodescription}
                             </Segment>
                           </Grid.Row>
                           <Grid.Row style={{ marginTop: 10 }}>
-                            <Header style={{ fontSize: 'smaller' }} color="orange" as="h5">
+                            <Header
+                              style={{ fontSize: 'smaller' }}
+                              color="orange"
+                              as="h5"
+                            >
                               Qantite restans au stoke
                             </Header>
-                            <Segment style={{ fontSize: 'smaller' }} color="red" raised>{`il ne reste plus que ${prodstock}`}</Segment>
+                            <Segment
+                              style={{ fontSize: 'smaller' }}
+                              color="red"
+                              raised
+                            >{`il ne reste plus que ${prodstock}`}</Segment>
                           </Grid.Row>
                           <Grid.Row style={{ marginTop: 10, marginBottom: 20 }}>
-                            <Header style={{ fontSize: 'smaller' }} color="orange" as="h5">
+                            <Header
+                              style={{ fontSize: 'smaller' }}
+                              color="orange"
+                              as="h5"
+                            >
                               Garanties {prodgaranties}
                             </Header>
                             <Segment color="blue" raised>
-                              <h3 style={{ fontSize: 'smaller' }}>vous ete intregralement renbource si :</h3>
-                              <List style={{ fontSize: 'smaller' }} divided relaxed>
-                                <List.Item>le produit n est pas identique au produit commander sur le site.</List.Item>
+                              <h3 style={{ fontSize: 'smaller' }}>
+                                vous ete intregralement renbource si :
+                              </h3>
+                              <List
+                                style={{ fontSize: 'smaller' }}
+                                divided
+                                relaxed
+                              >
+                                <List.Item>
+                                  le produit n est pas identique au produit
+                                  commander sur le site.
+                                </List.Item>
                                 <List.Item>le produit est defectuer.</List.Item>
                                 <List.Item>
-                                  le produit n est pas n est pas a plus de <b> 30% confectioner en afrique</b>.
+                                  le produit n est pas n est pas a plus de{' '}
+                                  <b> 30% confectioner en afrique</b>.
                                 </List.Item>
                               </List>
                             </Segment>
@@ -480,7 +586,10 @@ class product extends React.Component {
                       menuItem: 'livraison',
                       render: () => (
                         <Tab.Pane>
-                          <MobileTableau cat={prodcathegory} trans={prodtransport} />
+                          <MobileTableau
+                            cat={prodcathegory}
+                            trans={prodtransport}
+                          />
                         </Tab.Pane>
                       ),
                     },
@@ -505,7 +614,12 @@ class product extends React.Component {
                                     labelPosition="right"
                                     icon="edit"
                                     primary
-                                    onClick={() => this.commetSubmit(connectUserName, connectUserAvatar)}
+                                    onClick={() =>
+                                      this.commetSubmit(
+                                        connectUserName,
+                                        connectUserAvatar
+                                      )
+                                    }
                                   />
                                 ) : (
                                   <Button
@@ -514,13 +628,19 @@ class product extends React.Component {
                                     content="connecter vous pour commenter"
                                     labelPosition="right"
                                     icon="users"
-                                    onClick={() => this.props.history.push('/login')}
+                                    onClick={() =>
+                                      this.props.history.push('/login')
+                                    }
                                   />
                                 )}
                               </Form>
                             </Grid.Row>
                             <Grid.Row style={{ marginTop: 5 }}>
-                              <Comments prodId={prodid} connectUser={id} ownerId={owner} />
+                              <Comments
+                                prodId={prodid}
+                                connectUser={id}
+                                ownerId={owner}
+                              />
                             </Grid.Row>
                           </Grid>
                         </Tab.Pane>
@@ -532,21 +652,31 @@ class product extends React.Component {
                         <Tab.Pane attached={false}>
                           <div>
                             <Segment style={{ fontSize: 12 }} raised>
-                              la garanties de reprise du produit offerte est de: <b style={{ color: 'red' }}>{prodgaranties}</b>
+                              la garanties de reprise du produit offerte est de:{' '}
+                              <b style={{ color: 'red' }}>{prodgaranties}</b>
                             </Segment>
                             <Segment raised>
-                              <h3 style={{ fontSize: 12 }}>vous ete intregralement renbource si :</h3>
+                              <h3 style={{ fontSize: 12 }}>
+                                vous ete intregralement renbource si :
+                              </h3>
                               <List style={{ fontSize: 12 }} divided relaxed>
-                                <List.Item>le produit n est pas identique au produit commander sur le site.</List.Item>
+                                <List.Item>
+                                  le produit n est pas identique au produit
+                                  commander sur le site.
+                                </List.Item>
                                 <List.Item>le produit est defectuer.</List.Item>
                                 <List.Item>
-                                  le produit n est pas n est pas a plus de <b> 30% confectioner en afrique</b>.
+                                  le produit n est pas n est pas a plus de{' '}
+                                  <b> 30% confectioner en afrique</b>.
                                 </List.Item>
                               </List>
                             </Segment>
 
                             <Grid>
-                              <Grid.Column style={{ fontSize: 12 }} textAlign="right">
+                              <Grid.Column
+                                style={{ fontSize: 12 }}
+                                textAlign="right"
+                              >
                                 <Button size="tiny" fluid color="green">
                                   commander maintenamt
                                 </Button>
@@ -569,11 +699,18 @@ class product extends React.Component {
               <Lightbox
                 mainSrc={prodimages[photoIndex]}
                 nextSrc={prodimages[(photoIndex + 1) % prodimages.length]}
-                prevSrc={prodimages[(photoIndex + prodimages.length - 1) % prodimages.length]}
-                onCloseRequest={() => this.setState({ isOpen: false, autoplay: true })}
+                prevSrc={
+                  prodimages[
+                    (photoIndex + prodimages.length - 1) % prodimages.length
+                  ]
+                }
+                onCloseRequest={() =>
+                  this.setState({ isOpen: false, autoplay: true })
+                }
                 onMovePrevRequest={() =>
                   this.setState({
-                    photoIndex: (photoIndex + prodimages.length - 1) % prodimages.length,
+                    photoIndex:
+                      (photoIndex + prodimages.length - 1) % prodimages.length,
                   })
                 }
                 onMoveNextRequest={() =>
@@ -585,7 +722,12 @@ class product extends React.Component {
             )}
             <BigMenu />
             <Grid style={{ marginTop: '40px' }}>
-              <Grid.Column style={{ marginLeft: '20px' }} floated="left" tablet={15} computer={12}>
+              <Grid.Column
+                style={{ marginLeft: '20px' }}
+                floated="left"
+                tablet={15}
+                computer={12}
+              >
                 <div style={{ width: '100%' }}>
                   <Grid>
                     <Grid.Row>
@@ -599,12 +741,16 @@ class product extends React.Component {
                             ribbon: true,
                           }}
                           style={{ height: '8em' }}
-                          src={profil ? `${profil}` : 'http://www.lisapoyakama.org/wp-content/uploads/2016/08/AshantiToZulu_100-1024x484.jpg'}
+                          src={
+                            profil
+                              ? `${profil}`
+                              : 'http://www.lisapoyakama.org/wp-content/uploads/2016/08/AshantiToZulu_100-1024x484.jpg'
+                          }
                         />
                       </Grid.Column>
                       <Grid.Column width={12}>
                         <div>
-                          <Link to={`/store/${owner}`}>
+                          <Link to={`/store/${BusinessName}/${owner}`}>
                             <Image
                               style={{ height: '3em' }}
                               src="https://image.freepik.com/psd-gratuitement/petit-magasin-icone-psd_30-2392.jpg"
@@ -617,12 +763,25 @@ class product extends React.Component {
                         <Grid.Row style={{ marginTop: 20 }}>
                           <Grid columns="equal">
                             <Grid.Column width={8}>
-                              <Rating icon="star" defaultRating={3} maxRating={5} disabled />
+                              <Rating
+                                icon="star"
+                                defaultRating={3}
+                                maxRating={5}
+                                disabled
+                              />
                             </Grid.Column>
                             <Grid.Column width={8}>
                               <div>
-                                <Modal trigger={<Button>Mes Contacts</Button>} basic size="small" closeIcon>
-                                  <Header icon="phone square" content="appel moi pour plus d info" />
+                                <Modal
+                                  trigger={<Button>Mes Contacts</Button>}
+                                  basic
+                                  size="small"
+                                  closeIcon
+                                >
+                                  <Header
+                                    icon="phone square"
+                                    content="appel moi pour plus d info"
+                                  />
                                   <Modal.Content>
                                     <Grid columns={2} divided>
                                       <Grid.Row stretched>
@@ -639,17 +798,41 @@ class product extends React.Component {
                                         </Grid.Column>
                                         <Grid.Column>
                                           <div>
-                                            <Header as="h2" style={{ fontSize: 40, color: 'green' }}>
+                                            <Header
+                                              as="h2"
+                                              style={{
+                                                fontSize: 40,
+                                                color: 'green',
+                                              }}
+                                            >
                                               {business}
                                             </Header>
-                                            <a style={{ fontSize: 30, padding: 15 }}>
+                                            <a
+                                              style={{
+                                                fontSize: 30,
+                                                padding: 15,
+                                              }}
+                                            >
                                               <Icon name="phone" />
-                                              <NumberFormat value={tell2} displayType={'text'} format="## ## ## ##" />
+                                              <NumberFormat
+                                                value={tell2}
+                                                displayType={'text'}
+                                                format="## ## ## ##"
+                                              />
                                             </a>
                                             <br />
-                                            <a style={{ fontSize: 30, padding: 15 }}>
+                                            <a
+                                              style={{
+                                                fontSize: 30,
+                                                padding: 15,
+                                              }}
+                                            >
                                               <Icon name="phone" />
-                                              <NumberFormat value={tell} displayType={'text'} format="## ## ## ##" />
+                                              <NumberFormat
+                                                value={tell}
+                                                displayType={'text'}
+                                                format="## ## ## ##"
+                                              />
                                             </a>
                                           </div>
                                         </Grid.Column>
@@ -670,7 +853,18 @@ class product extends React.Component {
                           <Slider {...settings}>
                             {prodimages.map(url => (
                               <div key={uuidv4()}>
-                                <img src={url} width="360" height="250" onClick={() => this.setState({ isOpen: true, autoplay: false })} alt="" />
+                                <img
+                                  src={url}
+                                  width="360"
+                                  height="250"
+                                  onClick={() =>
+                                    this.setState({
+                                      isOpen: true,
+                                      autoplay: false,
+                                    })
+                                  }
+                                  alt=""
+                                />
                               </div>
                             ))}
                           </Slider>
@@ -679,7 +873,18 @@ class product extends React.Component {
                           <Slider {...settings}>
                             {prodimages.map(url => (
                               <div key={uuidv4()}>
-                                <img src={url} width="460" height="350" onClick={() => this.setState({ isOpen: true, autoplay: false })} alt="" />
+                                <img
+                                  src={url}
+                                  width="460"
+                                  height="350"
+                                  onClick={() =>
+                                    this.setState({
+                                      isOpen: true,
+                                      autoplay: false,
+                                    })
+                                  }
+                                  alt=""
+                                />
                               </div>
                             ))}
                           </Slider>
@@ -687,19 +892,41 @@ class product extends React.Component {
                       </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>
-                      <Button style={{ marginLeft: '90%' }} size="mini" inverted color="red">
+                      <Button
+                        style={{ marginLeft: '90%' }}
+                        size="mini"
+                        inverted
+                        color="red"
+                      >
                         <Icon name="flag outline" />
                         signaler
                       </Button>
                       <Scorevalue />
-                      <Statistic size="mini" style={{ marginLeft: '1.5%', marginTop: '-34px' }}>
+                      <Statistic
+                        size="mini"
+                        style={{ marginLeft: '1.5%', marginTop: '-34px' }}
+                      >
                         <Statistic.Value>
                           <Icon size="small" name="users" />
                           <GetLikesQueryResponse />
                         </Statistic.Value>
                       </Statistic>
-                      <Grid.Column style={{ padding: 0, marginTop: 0, color: 'red', fontSize: 20 }} textAlign="center" width={15}>
-                        <NumberFormat value={prodprice} displayType={'text'} thousandSeparator=" " suffix={' Fcfa'} />
+                      <Grid.Column
+                        style={{
+                          padding: 0,
+                          marginTop: 0,
+                          color: 'red',
+                          fontSize: 20,
+                        }}
+                        textAlign="center"
+                        width={15}
+                      >
+                        <NumberFormat
+                          value={prodprice}
+                          displayType={'text'}
+                          thousandSeparator=" "
+                          suffix={' Fcfa'}
+                        />
                       </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>
@@ -731,7 +958,10 @@ class product extends React.Component {
                                     <Header color="orange" as="h5">
                                       Qantite restans au stoke
                                     </Header>
-                                    <Segment color="red" compact>{`il ne reste plus que ${prodstock}`}</Segment>
+                                    <Segment
+                                      color="red"
+                                      compact
+                                    >{`il ne reste plus que ${prodstock}`}</Segment>
                                   </Grid.Row>
                                 </Tab.Pane>
                               ),
@@ -740,7 +970,10 @@ class product extends React.Component {
                               menuItem: 'Livraison et paiement',
                               render: () => (
                                 <Tab.Pane attached={false}>
-                                  <Tabeau cat={prodcathegory} trans={prodtransport} />
+                                  <Tabeau
+                                    cat={prodcathegory}
+                                    trans={prodtransport}
+                                  />
                                 </Tab.Pane>
                               ),
                             },
@@ -751,7 +984,11 @@ class product extends React.Component {
                                   <Grid divided="vertically">
                                     <Grid.Row columns={2}>
                                       <Grid.Column>
-                                        <Comments prodId={prodid} connectUser={id} ownerId={owner} />
+                                        <Comments
+                                          prodId={prodid}
+                                          connectUser={id}
+                                          ownerId={owner}
+                                        />
                                       </Grid.Column>
                                       <Grid.Column>
                                         <Form reply>
@@ -768,7 +1005,12 @@ class product extends React.Component {
                                               labelPosition="left"
                                               icon="edit"
                                               primary
-                                              onClick={() => this.commetSubmit(connectUserName, connectUserAvatar)}
+                                              onClick={() =>
+                                                this.commetSubmit(
+                                                  connectUserName,
+                                                  connectUserAvatar
+                                                )
+                                              }
                                             />
                                           ) : (
                                             <Button
@@ -776,15 +1018,24 @@ class product extends React.Component {
                                               labelPosition="left"
                                               icon="users"
                                               color="green"
-                                              onClick={() => this.props.history.push('/login')}
+                                              onClick={() =>
+                                                this.props.history.push(
+                                                  '/login'
+                                                )
+                                              }
                                             />
                                           )}
                                         </Form>
                                         <Message success>
-                                          <Message.Header>Farafinalo</Message.Header>
+                                          <Message.Header>
+                                            Farafinalo
+                                          </Message.Header>
                                           <p>
-                                            Nous apportons nos pierre a l edification economique et sociale de l africaine avec des commentaire
-                                            constructive e l egare de nos future industruel africain!!
+                                            Nous apportons nos pierre a l
+                                            edification economique et sociale de
+                                            l africaine avec des commentaire
+                                            constructive e l egare de nos future
+                                            industruel africain!!
                                           </p>
                                         </Message>
                                       </Grid.Column>
@@ -799,22 +1050,37 @@ class product extends React.Component {
                                 <Tab.Pane attached={false}>
                                   <div>
                                     <Segment raised>
-                                      la garanties de reprise du produit offerte est de: <b style={{ color: 'red' }}>{prodgaranties}</b>
+                                      la garanties de reprise du produit offerte
+                                      est de:{' '}
+                                      <b style={{ color: 'red' }}>
+                                        {prodgaranties}
+                                      </b>
                                     </Segment>
                                     <Segment raised>
-                                      <h3>vous ete intregralement renbource si :</h3>
+                                      <h3>
+                                        vous ete intregralement renbource si :
+                                      </h3>
                                       <List divided relaxed>
-                                        <List.Item>le produit n est pas identique au produit commander sur le site.</List.Item>
-                                        <List.Item>le produit est defectuer.</List.Item>
                                         <List.Item>
-                                          le produit n est pas n est pas a plus de <b> 30% confectioner en afrique</b>.
+                                          le produit n est pas identique au
+                                          produit commander sur le site.
+                                        </List.Item>
+                                        <List.Item>
+                                          le produit est defectuer.
+                                        </List.Item>
+                                        <List.Item>
+                                          le produit n est pas n est pas a plus
+                                          de <b> 30% confectioner en afrique</b>
+                                          .
                                         </List.Item>
                                       </List>
                                     </Segment>
 
                                     <Grid>
                                       <Grid.Column textAlign="right">
-                                        <Button color="green">commander maintenamt</Button>
+                                        <Button color="green">
+                                          commander maintenamt
+                                        </Button>
                                       </Grid.Column>
                                     </Grid>
                                   </div>

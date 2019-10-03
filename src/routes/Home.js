@@ -235,9 +235,39 @@ const panes = [
     menuItem: { key: 'insolit', icon: 'in cart', color: 'teal', content: 'autre' },
     render: () => (
       <Tab.Pane>
-        <Link to="/product/cathegory/autre" style={{ color: 'red' }}>
-          Autre
-        </Link>
+        <Grid columns={4}>
+          <Grid.Row>
+            <Grid.Column>
+              <h4>Livres</h4>
+              <List>
+                <List.Item>
+                  <Link to="/product/cathegory/livres">Livres</Link>
+                </List.Item>
+              </List>
+            </Grid.Column>
+            <Grid.Column>
+              <h4>Autre</h4>
+              <List>
+                <List.Item>
+                  <Link to="/product/cathegory/autre" style={{ color: 'red' }}>
+                    logiciel
+                  </Link>
+                </List.Item>
+              </List>
+            </Grid.Column>
+            <Grid.Column>
+              {''}
+            </Grid.Column>
+            <Grid.Column>
+              <Image
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8QU2l-uo4JukqUl6RJ1n8esSyvehLLz58rSWBMOpvI1Q1qNjwsw"
+                size="medium"
+                alt="farafinalo"
+                wrapped
+              />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       </Tab.Pane>
     ),
   },
@@ -315,26 +345,12 @@ class Home extends React.Component {
                 <Responsive {...Responsive.onlyComputer}>
                   <Grid>
                     <Grid.Row centered>
-                      <Image
-                        alt="farafinalo"
-                        style={{ width: '20em', height: '15em' }}
-                        src="/baby.png"
-                      />
-                    </Grid.Row>
-                    <Grid.Row centered>
                       <div> OOps! desole verifier votre connection internet</div>
                     </Grid.Row>
                   </Grid>
                 </Responsive>
                 <Responsive {...Responsive.onlyMobile}>
                   <Grid>
-                    <Grid.Row centered>
-                      <Image
-                        alt="farafinalo"
-                        style={{ width: '80%', height: '80%' }}
-                        src="/baby.png"
-                      />
-                    </Grid.Row>
                     <Grid.Row centered>
                       <div> OOps! desole verifier votre connection internet</div>
                     </Grid.Row>
@@ -359,6 +375,7 @@ class Home extends React.Component {
                           prodPrice={prod.prodprice}
                           prodId={prod.id}
                           owner={false}
+                          prodcath={prod.prodcathegory}
                         />
                       </Grid.Column>
                     ))}
@@ -380,6 +397,7 @@ class Home extends React.Component {
                           imagelink={prod.prodimages[0]}
                           prodPrice={prod.prodprice}
                           prodId={prod.id}
+                          prodcath={prod.prodcathegory}
                         />
                       </Grid.Column>
                     ))}
@@ -606,6 +624,11 @@ class Home extends React.Component {
                 <Dropdown.Menu>
                   <Dropdown.Header icon="tags" content="autre" />
                   <Dropdown.Divider />
+                  <Dropdown.Item>
+                    <Link to="/product/cathegory/livres" style={{ color: 'red' }}>
+                      Livres
+                    </Link>
+                  </Dropdown.Item>
                   <Dropdown.Item>
                     <Link to="/product/cathegory/autre" style={{ color: 'red' }}>
                       Autre

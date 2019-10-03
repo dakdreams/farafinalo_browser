@@ -68,6 +68,7 @@ class addprodLayout extends React.Component {
       loading: false,
       photoIndex: 0,
       isOpen: false,
+      sendLoading: false,
     };
   }
 
@@ -186,8 +187,10 @@ class addprodLayout extends React.Component {
       });
 
       const { ok, errors } = response.data.updateProduct;
+      console.log(errors, ok);
 
       if (ok) {
+        this.setState({ sendLoading: true });
         window.location.replace('/');
       } else {
         const err = {};
@@ -215,6 +218,7 @@ class addprodLayout extends React.Component {
       const { ok, errors } = response.data.addProduct;
 
       if (ok) {
+        this.setState({ sendLoading: true });
         window.location.replace('/');
       } else {
         const err = {};
@@ -249,6 +253,7 @@ class addprodLayout extends React.Component {
       photoIndex,
       isOpen,
       dropError,
+      sendLoading,
     } = this.state;
     const errorList = [];
 
@@ -337,6 +342,9 @@ class addprodLayout extends React.Component {
 
         {business ? (
           <div style={{ marginTop: 35, paddingTop: 0 }}>
+            <Dimmer active={sendLoading}>
+              <Loader>veiller patienter svp</Loader>
+            </Dimmer>
             {isOpen && (
               <Lightbox
                 mainSrc={prodimages[photoIndex]}
@@ -404,7 +412,7 @@ class addprodLayout extends React.Component {
                       defaultValue={prodcathegory}
                     /> */}
                       <Form.Field label="cathegorie de produit:" control="select" value={prodcathegory} onChange={this.getCathegorie}>
-                        <optgroup label="Ameublement">             
+                        <optgroup label="Ameublement">
                           <option value="lit">Lit</option>
                           <option value="tableau">tableau</option>
                           <option value="porcelaine">porcelaine</option>
@@ -423,17 +431,20 @@ class addprodLayout extends React.Component {
                           <option value="Autre-femme">Autre</option>
                         </optgroup>
                         <optgroup label="Modes Homme">
-                          <option value="chaussureH">Chaussure</option>
-                          <option value="vetementH">Vetements</option>
-                          <option value="sacH">Sacs</option>
-                          <option value="accessoireH">Accessoire</option>
+                          <option value="chaussure-homme">Chaussure</option>
+                          <option value="vestimantaire-homme">Vetements</option>
+                          <option value="sac">Sacs</option>
+                          <option value="accessoire">Accessoire</option>
                           <option value="Autre-home">Autre</option>
                         </optgroup>
                         <optgroup label="Technologies">
                           <option value="materiels">Materiels</option>
                           <option value="logiciel">Logiciel</option>
                         </optgroup>
-                        <option value="autre">Autre</option>
+                        <optgroup label="Autre">
+                          <option value="livres">Livres</option>
+                          <option value="autre">Autre</option>
+                        </optgroup>
                       </Form.Field>
                     </Form.Group>
                     <Form.Group widths="equal">
@@ -458,7 +469,6 @@ class addprodLayout extends React.Component {
                     /> */}
                       <Form.Field label="garanties de l article:" control="select" value={prodgaranties} onChange={this.getGaranties}>
                         <option value="1 jour">1 jour</option>
-                        <option value="2 jour">1 jour</option>
                         <option value="1 semaine">1 semaine</option>
                         <option value="1 mois">1 mois</option>
                         <option value="3 mois">3 mois</option>
