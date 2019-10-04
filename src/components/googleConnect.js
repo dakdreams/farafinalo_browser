@@ -10,15 +10,12 @@ class GoogleConnect extends React.Component {
   state = {};
 
   responseGoogle = async response => {
-    console.log(response);
     const secondname = await response.profileObj.familyName;
     const firstname = await response.profileObj.givenName;
     const email = await response.profileObj.email;
     const password = await response.googleId;
     const avatar = await response.profileObj.imageUrl;
     
-    console.log(secondname, firstname, email, password, avatar);
-
     const response1 = await this.props.loginMutation({
       variables: { email, password },
     });
@@ -51,7 +48,7 @@ class GoogleConnect extends React.Component {
   render() {
     const GoogleContent = (
       <GoogleLogin
-        clientId="625734482369-aconouubg0trvp42l7a2u3ftk75uq6q5.apps.googleusercontent.com"
+        clientId="625734482369-ldaienbb8boe88152e864mljs2rpiuik.apps.googleusercontent.com"
         buttonText="connection Google"
         onSuccess={this.responseGoogle}
         onFailure={this.responseGoogle}

@@ -47,7 +47,7 @@ class AllStore extends React.Component {
       id: store.id,
       image: store.profil
         ? `${store.profil}`
-        : 'http://www.lisapoyakama.org/wp-content/uploads/2016/08/AshantiToZulu_100-1024x484.jpg',
+        : 'store-icon.png',
       // price: `${prod.prodprice} fcfa`,
     }));
 

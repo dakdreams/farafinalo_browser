@@ -436,7 +436,7 @@ class product extends React.Component {
                   <Grid.Column width={3}>
                     <img
                       src={
-                        'http://www.myownbali.com/wp-content/uploads/store-icon.png'
+                        'store-icon.png'
                       }
                       width="30"
                       height="30"
@@ -744,7 +744,7 @@ class product extends React.Component {
                           src={
                             profil
                               ? `${profil}`
-                              : 'http://www.lisapoyakama.org/wp-content/uploads/2016/08/AshantiToZulu_100-1024x484.jpg'
+                              : 'store-icon.png'
                           }
                         />
                       </Grid.Column>
@@ -792,7 +792,7 @@ class product extends React.Component {
                                             src={
                                               ownerAvatar
                                                 ? `${ownerAvatar}`
-                                                : 'http://www.lisapoyakama.org/wp-content/uploads/2016/08/AshantiToZulu_100-1024x484.jpg'
+                                                : 'store-icon.png'
                                             }
                                           />
                                         </Grid.Column>

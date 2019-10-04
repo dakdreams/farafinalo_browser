@@ -63,7 +63,7 @@ class Messages extends React.Component {
                       {com.followedavatar ? (
                         <Comment.Avatar src={`${com.followedavatar}`} />
                       ) : (
-                        <Comment.Avatar src="https://www.goafricaonline.com/images/drapeaux/afrique.png" />
+                        <Comment.Avatar src="afriqua.png" />
                       )}
                       <Comment.Content>
                         <Comment.Author as="a" href={`store/${com.suivi}`} style={{ color: 'green', border: 'solid', borderRadius: 30, padding: 2 }}>
@@ -123,7 +123,7 @@ class Messages extends React.Component {
                       {com.usercommentavatar ? (
                         <Comment.Avatar src={`${com.usercommentavatar}`} />
                       ) : (
-                        <Comment.Avatar src="https://www.goafricaonline.com/images/drapeaux/afrique.png" />
+                        <Comment.Avatar src="afriqua.png" />
                       )}
                       <Comment.Content>
                         {com.userid === com.prodowner ? (

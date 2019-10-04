@@ -213,7 +213,7 @@ class updating extends React.Component {
       return (
         <Image
           style={{ width: '100%', height: '100%' }}
-          src="http://www.lisapoyakama.org/wp-content/uploads/2016/08/AshantiToZulu_100-1024x484.jpg"
+          src="store-icon.png"
         />
       );
     };

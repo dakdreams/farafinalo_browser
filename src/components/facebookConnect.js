@@ -79,7 +79,7 @@ class FacebookConnect extends React.Component {
     const fbContent = (
       <FacebookLogin
         appId="292795687987735"
-        autoLoad={false}
+        autoLoad
         fields="name,email,picture"
         onClick={this.componentClicked}
         callback={this.responseFacebook}

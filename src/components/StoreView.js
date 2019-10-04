@@ -28,7 +28,7 @@ class StoreView extends React.Component {
             src={
               this.state.storeProfil
                 ? `${this.state.storeProfil}`
-                : 'http://www.lisapoyakama.org/wp-content/uploads/2016/08/AshantiToZulu_100-1024x484.jpg'
+                : 'store-icon.png'
             }
           />
           <Image
@@ -87,7 +87,7 @@ class StoreView extends React.Component {
             src={
               this.state.storeProfil
                 ? `${this.state.storeProfil}`
-                : 'http://www.lisapoyakama.org/wp-content/uploads/2016/08/AshantiToZulu_100-1024x484.jpg'
+                : 'store-icon.png'
             }
           />
           <Image
@@ -135,7 +135,7 @@ class StoreView extends React.Component {
             src={
               this.state.storeProfil
                 ? `${this.state.storeProfil}`
-                : 'http://www.lisapoyakama.org/wp-content/uploads/2016/08/AshantiToZulu_100-1024x484.jpg'
+                : 'store-icon.png'
             }
           />
           <Image

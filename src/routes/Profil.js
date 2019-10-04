@@ -470,7 +470,7 @@ class Profil extends React.Component {
               src={
                 profil
                   ? `${profil}`
-                  : 'http://www.lisapoyakama.org/wp-content/uploads/2016/08/AshantiToZulu_100-1024x484.jpg'
+                  : 'store-icon.png'
               }
             />
             <MobileAvatar>
@@ -595,7 +595,7 @@ class Profil extends React.Component {
               {profil ? (
                 <ProfilImage src={`${profil}`} />
               ) : (
-                <ProfilImage src="http://www.lisapoyakama.org/wp-content/uploads/2016/08/AshantiToZulu_100-1024x484.jpg" />
+                <ProfilImage src="store-icon.png" />
               )}
               <TabletAvatar>
                 {avatar ? (
@@ -606,7 +606,7 @@ class Profil extends React.Component {
                     src={`${avatar}`}
                   />
                 ) : (
-                  <Image style={{ width: '238px', height: '238px' }} src="https://www.goafricaonline.com/images/drapeaux/afrique.png" />
+                  <Image style={{ width: '238px', height: '238px' }} src="afriqua.png" />
                 )}
               </TabletAvatar>
               <TabletView />
@@ -624,7 +624,7 @@ class Profil extends React.Component {
               {profil ? (
                 <ProfilImage src={`${profil}`} />
               ) : (
-                <ProfilImage src="http://www.lisapoyakama.org/wp-content/uploads/2016/08/AshantiToZulu_100-1024x484.jpg" />
+                <ProfilImage src="store-icon.png" />
               )}
               <Avatar>
                 {avatar ? (
@@ -633,7 +633,7 @@ class Profil extends React.Component {
                     src={`${avatar}`}
                   />
                 ) : (
-                  <Image style={{ width: '238px', height: '238px' }} src="https://www.goafricaonline.com/images/drapeaux/afrique.png" />
+                  <Image style={{ width: '238px', height: '238px' }} src="afriqua.png" />
                 )}
               </Avatar>
               <ComputerView />

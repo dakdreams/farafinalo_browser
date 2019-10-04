@@ -85,9 +85,9 @@ class tableau extends React.Component {
                 </Table.Cell>
                 <Table.Cell>
                   vous payer CATSH a la livraison apres verification de l autentisiter du produit ou via mobile bank:<br />{' '}
-                  <img alt="" style={{ width: 50, height: 50 }} src="https://img6.downloadapk.net/6/fe/ba29b7_0.png" />
-                  <img alt="" style={{ width: 50, height: 50 }} src="http://gtw-solutions.com/wp-content/uploads/2015/01/mtn-mobile-money.jpg" />
-                  <img alt="" style={{ width: 50, height: 50 }} src="http://emoney-ci.biz/wp-content/uploads/2017/02/moov-money.png" />
+                  <img alt="" style={{ width: 50, height: 50 }} src="orange-money.png" />
+                  <img alt="" style={{ width: 50, height: 50 }} src="mtn-mobile-money.jpg" />
+                  <img alt="" style={{ width: 50, height: 50 }} src="moov-money.png" />
                 </Table.Cell>
               </Table.Row>
             ) : (
