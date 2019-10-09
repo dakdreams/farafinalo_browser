@@ -103,7 +103,7 @@ class AllStore extends React.Component {
               <Grid divided="vertically">
                 <Grid.Row columns={2}>
                   {/* <div>{ product.map(prod => (prod.prodimages)) }</div> */}
-                  {allStore.map(store => (
+                  { allStore.map(store => (
                     <Grid.Column key={store.id}>
                       <StoreView
                         storeId={store.id}

@@ -372,6 +372,7 @@ class Home extends React.Component {
                           prodName={prod.prodname}
                           proDescription={prod.prodescription}
                           imagelink={prod.prodimages[0]}
+                          mainImagesLink={prod.prodmainimage}
                           prodPrice={prod.prodprice}
                           prodId={prod.id}
                           owner={false}
@@ -395,6 +396,7 @@ class Home extends React.Component {
                           prodName={prod.prodname}
                           proDescription={prod.prodescription}
                           imagelink={prod.prodimages[0]}
+                          mainImagesLink={prod.prodmainimage}
                           prodPrice={prod.prodprice}
                           prodId={prod.id}
                           prodcath={prod.prodcathegory}

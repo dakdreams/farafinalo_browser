@@ -8,6 +8,7 @@ class HomeProduct extends React.Component {
     this.state = {
       prodid: props.prodId,
       url: props.imagelink,
+      mainUrl: props.mainImagesLink,
       name: props.prodName,
       description: props.proDescription,
       price: props.prodPrice,
@@ -16,6 +17,7 @@ class HomeProduct extends React.Component {
   }
 
   render() {
+    const { mainUrl, url } = this.state;
     // pour ameliore le referencement
     const produitName = this.state.name.trim();
     const ProduitName = produitName.replace(/ /g, '-');
@@ -35,7 +37,7 @@ class HomeProduct extends React.Component {
         </Responsive>
         <Responsive {...Responsive.onlyComputer}>
           <Card raised link key={this.state.prodid}>
-            <Image style={{ height: '206.453px' }} src={this.state.url} />
+            <Image style={{ height: '206.453px' }} src={mainUrl || url} />
             <Card.Content style={{ fontWeight: 1000 }} extra>
               <Grid>
                 <Grid.Column floated="left" width={12}>

@@ -58,6 +58,7 @@ const allProductQuery = gql`
         prodprice
         prodescription
         prodimages
+        prodmainimage
         prodgaranties
         prodstock
         prodtransport
@@ -74,6 +75,7 @@ const addProductMutation = gql`
     $prodescription: String!
     $prodstock: Int
     $prodimages: [String!]
+    $prodmainimage: String
     $prodgaranties: String
     $prodtransport: String
   ) {
@@ -83,6 +85,7 @@ const addProductMutation = gql`
       prodprice: $prodprice
       prodescription: $prodescription
       prodimages: $prodimages
+      prodmainimage: $prodmainimage
       prodstock: $prodstock
       prodgaranties: $prodgaranties
       prodtransport: $prodtransport
@@ -124,6 +127,7 @@ const updateProductQuery = gql`
     $prodescription: String!
     $prodstock: Int
     $prodimages: [String!]
+    $prodmainimage: String
     $prodgaranties: String
     $prodtransport: String
   ) {
@@ -134,6 +138,7 @@ const updateProductQuery = gql`
       prodprice: $prodprice
       prodescription: $prodescription
       prodimages: $prodimages
+      prodmainimage: $prodmainimage
       prodstock: $prodstock
       prodgaranties: $prodgaranties
       prodtransport: $prodtransport
@@ -157,6 +162,7 @@ const cathegoryAllProductQuery = gql`
         prodname
         prodprice
         prodimages
+        prodmainimage
         prodescription
       }
     }
@@ -188,6 +194,7 @@ const getProductQuery = gql`
         prodprice
         prodescription
         prodimages
+        prodmainimage
         prodgaranties
         prodtransport
         prodstock
@@ -268,6 +275,7 @@ const getUserAllProductQuery = gql`
         prodprice
         prodescription
         prodimages
+        prodmainimage
         prodgaranties
         prodstock
       }
@@ -298,6 +306,7 @@ const storeAllProductQuery = gql`
         prodprice
         prodescription
         prodimages
+        prodmainimage
         prodgaranties
         prodstock
         owner

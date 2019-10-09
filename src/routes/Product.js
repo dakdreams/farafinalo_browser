@@ -231,6 +231,9 @@ class product extends React.Component {
     const titi = !firstname;
 
     const cathegory = prodcathegory;
+    const Wattlink = `https://api.whatsapp.com/send?phone=+22507815201&text=${prodname}
+    -ID:${prodid}
+    -imagurl`;
 
     const settings2 = {
       dots: true,
@@ -434,14 +437,7 @@ class product extends React.Component {
 
                 <Grid.Row columns={2}>
                   <Grid.Column width={3}>
-                    <img
-                      src={
-                        'store-icon.png'
-                      }
-                      width="30"
-                      height="30"
-                      alt=""
-                    />
+                    <img src={'store-icon.png'} width="30" height="30" alt="" />
                   </Grid.Column>
                   <Grid.Column width={6} textAlign="center">
                     <Link to={`/store/${BusinessName}/${owner}`}>
@@ -471,6 +467,13 @@ class product extends React.Component {
                           </p>
                         </Modal.Content>
                         <Modal.Actions>
+                          <Button color="green" inverted>
+                            <Icon name="whatsapp" />
+                            <a href={Wattlink}>
+                              WhatsApp
+                            </a>
+                          </Button>
+
                           <Button color="green" inverted>
                             <Icon name="call" />{' '}
                             <a href={`tel: +225${tell2}`}> Appeler</a>
@@ -680,6 +683,12 @@ class product extends React.Component {
                                 <Button size="tiny" fluid color="green">
                                   commander maintenamt
                                 </Button>
+                                <a href="https://api.whatsapp.com/send?phone=+22507815201&text=monduprodut-idprod-imagurl">
+                                  <Icon
+                                    disabled
+                                    name="whatsapp"
+                                  /> WhatsApp{' '}
+                                </a>
                               </Grid.Column>
                             </Grid>
                           </div>
@@ -741,11 +750,7 @@ class product extends React.Component {
                             ribbon: true,
                           }}
                           style={{ height: '8em' }}
-                          src={
-                            profil
-                              ? `${profil}`
-                              : 'store-icon.png'
-                          }
+                          src={profil ? `${profil}` : 'store-icon.png'}
                         />
                       </Grid.Column>
                       <Grid.Column width={12}>

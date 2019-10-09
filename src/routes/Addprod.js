@@ -1,15 +1,32 @@
 import React from 'react';
 import { graphql, compose } from 'react-apollo';
 import axios from 'axios';
-import { Form, Container, Message, Dimmer, Loader, Grid, Responsive, Button, Segment } from 'semantic-ui-react';
+import {
+  Form,
+  Container,
+  Message,
+  Dimmer,
+  Loader,
+  Grid,
+  Responsive,
+  Button,
+  Segment,
+} from 'semantic-ui-react';
 import Dropzone from 'react-dropzone';
 import Slider from 'react-slick';
 import Lightbox from 'react-image-lightbox';
+import ImagePicker from 'react-image-picker';
+import 'react-image-picker/dist/index.css';
 
 import config from '../config';
 
 import Menu from '../responsive/menu';
-import { addProductMutation, getOwnerProductQuery, updateProductQuery, meQuery } from '../graphql/queries';
+import {
+  addProductMutation,
+  getOwnerProductQuery,
+  updateProductQuery,
+  meQuery,
+} from '../graphql/queries';
 
 // const options = [{ key: 'm', text: 'Meuble maison', value: 'meuble' }, { key: 'v', text: 'Vestimentaire', value: 'vestimentaire' }];
 
@@ -65,6 +82,7 @@ class addprodLayout extends React.Component {
       prodgarantiesError: '',
       prodtransport: 'charge du client',
       prodimages: [],
+      prodmainimage: '',
       loading: false,
       photoIndex: 0,
       isOpen: false,
@@ -80,9 +98,13 @@ class addprodLayout extends React.Component {
     this.setState({ loading: true });
     const value1 = [];
     if (files.length < 3) {
-      return this.setState({ dropError: 'vous devevier poster au minimum trois photos du produit' });
+      return this.setState({
+        dropError: 'vous devevier poster au minimum trois photos du produit',
+      });
     } else if (files.length > 6) {
-      return this.setState({ dropError: 'vous ne pouver pas poster plus de 5 photo du produit' });
+      return this.setState({
+        dropError: 'vous ne pouver pas poster plus de 5 photo du produit',
+      });
     }
     const uploaders = files.map(file => {
       // Initial FormData
@@ -122,6 +144,11 @@ class addprodLayout extends React.Component {
     await this.setState({ prodcathegory: event.target.value });
   };
 
+  getMainImage = async (images) => {
+    await this.setState({ prodmainimage: images.src });
+    console.log(images.src);
+  }
+
   handleChange = e => {
     const { name, value } = e.target;
     // name = "email";
@@ -140,7 +167,17 @@ class addprodLayout extends React.Component {
       if (!result) {
         this.props.history.push('/');
       } else {
-        const { prodcathegory, prodgaranties, prodescription, prodimages, prodname, prodprice, prodstock, prodtransport, owner } = result;
+        const {
+          prodcathegory,
+          prodgaranties,
+          prodescription,
+          prodimages,
+          prodname,
+          prodprice,
+          prodstock,
+          prodtransport,
+          owner,
+        } = result;
         await this.setState({
           prodcathegory,
           prodescription,
@@ -167,7 +204,17 @@ class addprodLayout extends React.Component {
       prodgarantiesError: '',
     });
 
-    const { prodname, prodprice, prodescription, prodstock, prodcathegory, prodgaranties, prodimages, prodtransport } = this.state;
+    const {
+      prodname,
+      prodprice,
+      prodescription,
+      prodstock,
+      prodcathegory,
+      prodgaranties,
+      prodimages,
+      prodmainimage,
+      prodtransport,
+    } = this.state;
     // update data querys
     const url = await this.props.location.search;
     if (url) {
@@ -182,6 +229,7 @@ class addprodLayout extends React.Component {
           prodcathegory,
           prodgaranties,
           prodimages,
+          prodmainimage,
           prodtransport,
         },
       });
@@ -211,6 +259,7 @@ class addprodLayout extends React.Component {
           prodcathegory,
           prodgaranties,
           prodimages,
+          prodmainimage,
           prodtransport,
         },
       });
@@ -313,7 +362,11 @@ class addprodLayout extends React.Component {
           <Slider {...settings2}>
             {prodimages.map(url => (
               <div key={url}>
-                <img src={url} style={{ width: '100%', height: '100%' }} alt="" />
+                <img
+                  src={url}
+                  style={{ width: '100%', height: '100%' }}
+                  alt=""
+                />
               </div>
             ))}
           </Slider>
@@ -349,11 +402,16 @@ class addprodLayout extends React.Component {
               <Lightbox
                 mainSrc={prodimages[photoIndex]}
                 nextSrc={prodimages[(photoIndex + 1) % prodimages.length]}
-                prevSrc={prodimages[(photoIndex + prodimages.length - 1) % prodimages.length]}
+                prevSrc={
+                  prodimages[
+                    (photoIndex + prodimages.length - 1) % prodimages.length
+                  ]
+                }
                 onCloseRequest={() => this.setState({ isOpen: false })}
                 onMovePrevRequest={() =>
                   this.setState({
-                    photoIndex: (photoIndex + prodimages.length - 1) % prodimages.length,
+                    photoIndex:
+                      (photoIndex + prodimages.length - 1) % prodimages.length,
                   })
                 }
                 onMoveNextRequest={() =>
@@ -369,19 +427,35 @@ class addprodLayout extends React.Component {
               content="veiller enregistres uniquement dans votre magasin des produit node in africa mercie"
             />
             <Grid>
-              <Grid.Column only="mobile computer" computer={6} mobile={6} textAlign="center">
+              <Grid.Column
+                only="mobile computer"
+                computer={6}
+                mobile={6}
+                textAlign="center"
+              >
                 <div>
                   <h4>images de votre produit</h4>
                   <Slider {...settings}>
                     {prodimages.map(url => (
                       <div key={url}>
-                        <img src={url} width="100%" height="100%" onClick={() => this.setState({ isOpen: true })} alt="" />
+                        <img
+                          src={url}
+                          width="100%"
+                          height="100%"
+                          onClick={() => this.setState({ isOpen: true })}
+                          alt=""
+                        />
                       </div>
                     ))}
                   </Slider>
                 </div>
               </Grid.Column>
-              <Grid.Column floated="right" tablet={16} computer={10} mobile={10}>
+              <Grid.Column
+                floated="right"
+                tablet={16}
+                computer={10}
+                mobile={10}
+              >
                 <Container text>
                   <Form>
                     <Form.Group widths="equal">
@@ -411,7 +485,12 @@ class addprodLayout extends React.Component {
                       options={options}
                       defaultValue={prodcathegory}
                     /> */}
-                      <Form.Field label="cathegorie de produit:" control="select" value={prodcathegory} onChange={this.getCathegorie}>
+                      <Form.Field
+                        label="cathegorie de produit:"
+                        control="select"
+                        value={prodcathegory}
+                        onChange={this.getCathegorie}
+                      >
                         <optgroup label="Ameublement">
                           <option value="lit">Lit</option>
                           <option value="tableau">tableau</option>
@@ -467,7 +546,12 @@ class addprodLayout extends React.Component {
                       defaultValue={prodgaranties}
                       // placeholder="garanties de l article"
                     /> */}
-                      <Form.Field label="garanties de l article:" control="select" value={prodgaranties} onChange={this.getGaranties}>
+                      <Form.Field
+                        label="garanties de l article:"
+                        control="select"
+                        value={prodgaranties}
+                        onChange={this.getGaranties}
+                      >
                         <option value="1 jour">1 jour</option>
                         <option value="1 semaine">1 semaine</option>
                         <option value="1 mois">1 mois</option>
@@ -475,8 +559,15 @@ class addprodLayout extends React.Component {
                         <option value="6 mois">6 mois</option>
                         <option value="1 ans">1 ans</option>
                       </Form.Field>
-                      <Form.Field label="transport du produit:" control="select" value={prodtransport} onChange={this.getStransport}>
-                        <option value="charge du client">charge du client</option>
+                      <Form.Field
+                        label="transport du produit:"
+                        control="select"
+                        value={prodtransport}
+                        onChange={this.getStransport}
+                      >
+                        <option value="charge du client">
+                          charge du client
+                        </option>
                         <option value="a votre charge">a votre charge</option>
                       </Form.Field>
                     </Form.Group>
@@ -490,15 +581,45 @@ class addprodLayout extends React.Component {
                     />
 
                     <Grid.Column>
-                      <Dropzone style={{ height: '100%', width: '80%', border: 'dashed' }} multiple accept="image/*" onDrop={this.onDrop}>
+                      <Dropzone
+                        style={{
+                          height: '100%',
+                          width: '80%',
+                          border: 'dashed',
+                        }}
+                        multiple
+                        accept="image/*"
+                        onDrop={this.onDrop}
+                      >
                         {DropDefaultImages}
                       </Dropzone>
+                      {prodimages[0]
+                        ? <div>
+                          <ImagePicker 
+                            images={prodimages.map((image, i) => ({ src: image, value: i }))}
+                            onPick={this.getMainImage}
+                          />
+                        </div>
+                        : ''}
                     </Grid.Column>
                   </Form>
-                  {prodnameError || prodcathegoryError || prodpriceError || prodescriptionError || prodstockError || prodgarantiesError ? (
-                    <Message error header=" erreur verifier vos donner " list={errorList} />
-                  ) : null}
-                  <Button color="blue" style={{ marginTop: 15 }} onClick={this.submit}>
+                  {prodnameError ||
+                  prodcathegoryError ||
+                  prodpriceError ||
+                  prodescriptionError ||
+                  prodstockError ||
+                  prodgarantiesError ? (
+                      <Message
+                        error
+                        header=" erreur verifier vos donner "
+                        list={errorList}
+                      />
+                    ) : null}
+                  <Button
+                    color="blue"
+                    style={{ marginTop: 15 }}
+                    onClick={this.submit}
+                  >
                     envoyer
                   </Button>
                 </Container>
@@ -506,7 +627,11 @@ class addprodLayout extends React.Component {
             </Grid>
           </div>
         ) : (
-          <p style={{ marginTop: 500 }}> desoler vos n est pas pour le moment un vendeur veilleur modifier votre status dans vos profil </p>
+          <p style={{ marginTop: 500 }}>
+            {' '}
+            desoler vos n est pas pour le moment un vendeur veilleur modifier
+            votre status dans vos profil{' '}
+          </p>
         )}
       </Segment.Group>
     );

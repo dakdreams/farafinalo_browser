@@ -503,6 +503,7 @@ class Profil extends React.Component {
                                     proDescription={prod.prodescription}
                                     imagelink={prod.prodimages[0]}
                                     prodPrice={prod.prodprice}
+                                    prodcath={prod.prodcathegory}
                                     prodId={prod.id}
                                     owner
                                   />
